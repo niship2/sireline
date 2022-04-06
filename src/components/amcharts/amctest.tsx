@@ -6,22 +6,23 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { resolve } from 'path/posix';
 import { appl1,appl2 } from '../selectbox'
 import Select from 'react-select'
+import { number } from 'prop-types';
 
 
 type Props = {
   children?: string;
 };
 
-function loadData(props) {
+function loadData(props: any) {
   const [applicant1,setAppl] = useState("キヤノン株式会社")
   const [applicant2,setAppl2] = useState("テルモ株式会社")
   const [count, setCount] = useState(0)
   
-  const applchange = e => {
+  const applchange:any= (e: { value: React.SetStateAction<string>; }) => {
     setAppl(e.value);
     //console.log(e.value);
   }
-  const applchange2 = e => {
+  const applchange2:any = (e: { value: React.SetStateAction<string>; }) => {
     setAppl2(e.value);
     //console.log(e.value);
   }
@@ -58,10 +59,11 @@ function loadData(props) {
         let url = "/api/compdata?applicant1=" + applicant1 + "&applicant2=" + applicant2;
   
         // Handle loaded data
-        am5.net.load(url).then(function(result) {
+        am5.net.load(url).then((result)=> {
   
-          // Parse loaded data
-          const data = JSON.parse(result.response).compdata
+          // Parse loaded data 
+          let jsdata:string = result.response as string;
+          const data = JSON.parse(jsdata).compdata
       
     
           chart.getNumberFormatter().set("numberFormat", "#.#s");
@@ -90,7 +92,7 @@ function loadData(props) {
             })
           );
 
-          function createSeries(field, labelCenterX, pointerOrientation, rangeValue) {
+          function createSeries(field: string, labelCenterX: number | am5.Percent, pointerOrientation: string, rangeValue: number) {
             let series = chart.series.push(
               am5xy.ColumnSeries.new(root, {
                 xAxis: xAxis,
@@ -100,7 +102,8 @@ function loadData(props) {
                 sequencedInterpolation: true,
                 clustered: false,
                 tooltip: am5.Tooltip.new(root, {
-                  pointerOrientation: pointerOrientation,
+                  
+                  //pointerOrientation: pointerOrientation,
                   labelText: "{categoryY}: {valueX}"
                 })
               })
@@ -126,10 +129,11 @@ function loadData(props) {
             series.data.setAll(data);
             series.appear();
       
-            let rangeDataItem = xAxis.makeDataItem({
+            let rangeDataItem:any = xAxis.makeDataItem({
               value: rangeValue
             });
-            xAxis.createAxisRange(rangeDataItem);
+            
+            xAxis.createAxisRange(rangeDataItem );
             rangeDataItem.get("grid").setAll({
               strokeOpacity: 1,
               stroke: series.get("stroke")
@@ -179,7 +183,7 @@ function loadData(props) {
       <div>
         <Select options={options}
         value={options.find(obj => obj.value === applicant1)}
-        onChange={applchange}
+        onChange = {applchange}
         isSearchable
         />
         <Select options={options}

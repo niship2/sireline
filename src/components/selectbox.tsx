@@ -14,18 +14,18 @@ export const appl1 = createContext("凸版印刷");
 export const appl2 = createContext("大日本印刷");
 
 
-const SelectBox = () => {
+const SelectBox = (props: any) => {
   const [selectedValue, setSelectedValue] = useState("凸版印刷");
   const [selectedValue2, setSelectedValue2] = useState("大日本印刷");
 
   
-  const handleChange1 = e => {
-    setSelectedValue(e.value);
-    console.log(e.value);
-    //console.log(e.value);
+  const handleChange1:any = function (e: { value: React.SetStateAction<string>; }) {
+      setSelectedValue(e.value);
+      console.log(e.value);
+      //console.log(e.value);
   }
 
-  const handleChange2 = e => {
+  const handleChange2:any = (e: { value: React.SetStateAction<string>; }) => {
     setSelectedValue2(e.value);
     console.log(e.value);
     

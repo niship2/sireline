@@ -139,23 +139,10 @@ const ProductList: NextPage = () => {
             >
               <Grid item>
                 <Typography variant="h4">
-                  Products
+                  2社比較
                 </Typography>
               </Grid>
-              <Grid item>
-                <NextLink
-                  href="/dashboard/products/new"
-                  passHref
-                >
-                  <Button
-                    component="a"
-                    startIcon={<PlusIcon fontSize="small" />}
-                    variant="contained"
-                  >
-                    Add
-                  </Button>
-                </NextLink>
-              </Grid>
+
             </Grid>
             <Box
               sx={{
@@ -163,22 +150,12 @@ const ProductList: NextPage = () => {
                 mt: 3
               }}
             >
-              <Button
-                startIcon={<UploadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
-                Import
-              </Button>
-              <Button
-                startIcon={<DownloadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
-                Export
-              </Button>
+              
+             
             </Box>
           </Box>
           <Card>
-            <ProjectListFilters onChange={handleFiltersChange} />
+           
             <ProductListTable
               onPageChange={handlePageChange}
               onRowsPerPageChange={handleRowsPerPageChange}

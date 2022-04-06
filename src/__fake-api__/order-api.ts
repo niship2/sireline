@@ -364,7 +364,7 @@ class OrderApi {
   getOrder(): Promise<Order> {
     const order: Order = {
       id: '5ecb8a6879877087d4aa2690',
-      coupon: null,
+      coupon: "",
       createdAt: subDays(subHours(now, 4), 1).getTime(),
       currency: '$',
       customer: {

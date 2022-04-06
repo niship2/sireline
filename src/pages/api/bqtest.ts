@@ -13,15 +13,17 @@ export interface Rankdata {
   
 //export default async(req: IncomingMessage, res: ServerResponse) => {
 export default async(req: NextApiRequest, res: NextApiResponse ) => {
+    const prv_key:string = process.env.FSA_PRIVATE_KEY.replace(/\\n/g, '\n')
     const bigquery = new BigQuery({
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
       credentials:{
         client_email: process.env.FSA_CLIENT_EMAIL,
-        private_key: process.env.FSA_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        private_key: prv_key,
       }
     });
   
     //console.log(req.body)
+    
     console.log(req.query)
     const year = req.query.year;
     const count = Number(req.query.count);

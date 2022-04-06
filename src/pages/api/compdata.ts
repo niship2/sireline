@@ -16,6 +16,7 @@ export interface Compdata {
   
 //export default async(req: IncomingMessage, res: ServerResponse) => {
 export default async(req: NextApiRequest, res: NextApiResponse ) => {
+
     const bigquery = new BigQuery({
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
       credentials:{
@@ -25,7 +26,7 @@ export default async(req: NextApiRequest, res: NextApiResponse ) => {
     });
   
     //console.log(req.body)
-    console.log(req.query)
+    
     const applicant1 = req.query.applicant1;
     const applicant2 = req.query.applicant2;
 

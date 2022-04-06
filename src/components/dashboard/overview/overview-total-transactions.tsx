@@ -1,19 +1,17 @@
 import type { FC } from 'react';
 import type { ApexOptions } from 'apexcharts';
 import { format } from 'date-fns';
-import { Box, Card, CardHeader, Divider } from '@mui/material';
+import { Box, Card, CardHeader, Divider,CardActions,Button,Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Chart } from '../../chart';
 import { Scrollbar } from '../../scrollbar';
-import dynamic from 'next/dynamic'
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+
 
 
 //ssrさせない呪文。その結果を使う
 
-export const Comp3 = dynamic(
-  () => import('../../amcharts/amctest'),
-  { ssr: false }
-)
+
 
 const data = {
   series: [
@@ -113,9 +111,15 @@ export const OverviewTotalTransactions: FC = (props) => {
 
   return (
     <Card {...props}>
+        <Typography
+              color="primary"
+              variant="h4"
+            >
+              TS値時系列変化
+        </Typography>
       <CardHeader
         subheader={format(new Date(), 'MMM yyyy')}
-        title="TS値時系列変化"
+        
       />
       <Divider />
       <Scrollbar>
@@ -134,10 +138,13 @@ export const OverviewTotalTransactions: FC = (props) => {
           />
         </Box>
       </Scrollbar>
-      <Box>
-        <Comp3 />  
+      <Divider />
+      <CardActions>
+        <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+          詳細はこちら
+        </Button>
+      </CardActions>
 
-      </Box>
     </Card>
   );
 };

@@ -20,7 +20,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 
 const order = {
   id: '5ecb8a6879877087d4aa2690',
-  coupon: null,
+  coupon: "",
   createdAt: new Date().getTime(),
   currency: '$',
   customer: {

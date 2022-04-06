@@ -181,7 +181,7 @@ export const InvoiceListTable: FC<InvoiceListTableProps> = (props) => {
     ...other
   } = props;
 
-  const groupedInvoices = group && groupInvoices(invoices);
+  const groupedInvoices:any = group && groupInvoices(invoices);
 
   return (
     <div {...other}>
@@ -214,12 +214,7 @@ export const InvoiceListTable: FC<InvoiceListTableProps> = (props) => {
                       </Typography>
                     </TableCell>
                   </TableRow>
-                  {groupedInvoices[status].map((invoice) => (
-                    <InvoiceRow
-                      invoice={invoice}
-                      key={invoice.id}
-                    />
-                  ))}
+
                 </Fragment>
               ))}
             </TableBody>

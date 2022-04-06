@@ -42,7 +42,7 @@ export const OverviewTotalBalance: FC = (props) => (
     <CardContent>
       <Typography
         color="textSecondary"
-        variant="overline"
+        variant="h4"
       >
         注目企業
       </Typography>
