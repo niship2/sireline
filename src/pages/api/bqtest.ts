@@ -1,5 +1,5 @@
-//import type { IncomingMessage, ServerResponse } from 'http'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { IncomingMessage, ServerResponse } from 'http'
+//import type { NextApiRequest, NextApiResponse } from 'next'
 import { BigQuery} from '@google-cloud/bigquery'
 
 export interface Rankdata {
@@ -11,8 +11,8 @@ export interface Rankdata {
     total_val_ratio: number
   }
   
-//export default async(req: IncomingMessage, res: ServerResponse) => {
-export default async(req: NextApiRequest, res: NextApiResponse ) => {
+export default async(req: IncomingMessage, res: ServerResponse) => {
+//export default async(req: NextApiRequest, res: NextApiResponse ) => {
     const prv_key:string = process.env.FSA_PRIVATE_KEY.replace(/\\n/g, '\n')
     const bigquery = new BigQuery({
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -24,9 +24,9 @@ export default async(req: NextApiRequest, res: NextApiResponse ) => {
   
     //console.log(req.body)
     
-    console.log(req.query)
-    const year = req.query.year;
-    const count = Number(req.query.count);
+    console.log(req)
+    const year = 2020//req.query.year;
+    const count = 100//Number(req.query.count);
     const query = "select * \
     from techsize.TS_view.ranking2 \
     WHERE REG_YEAR = @year \
@@ -47,6 +47,6 @@ export default async(req: NextApiRequest, res: NextApiResponse ) => {
     // Wait for the query to finish
     const [rows] = await job.getQueryResults();
     const result: Rankdata[] = rows
-    return res.status(200).json({"rankdata":result })
+    //return res.status(200).json({"rankdata":result })
 
   }

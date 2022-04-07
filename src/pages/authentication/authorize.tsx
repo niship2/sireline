@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 
-const Authorize = () => {
+const Authorize = (st:any) => {
   const isMounted = useMounted();
   const router = useRouter();
   const { handleRedirectCallback } = useAuth();
@@ -33,7 +33,9 @@ const Authorize = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return null;
+  const stt:String = "ss"
+
+  return stt;
 };
 
 export default Authorize;

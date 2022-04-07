@@ -1,24 +1,16 @@
-//import { sleep } from '@amcharts/amcharts5/.internal/core/util/Time';
-//import { yearsToMonths } from 'date-fns';
 import React from 'react'
 import { useState } from "react";
-import Select from 'react-select'
-//import { optionCSS } from 'react-select/dist/declarations/src/components/Option';
-//import useSWR from 'swr'
+import Select from 'react-select';
 import { createContext } from "react";
-//import { array } from '@amcharts/amcharts5';
-//import loadData from './amcharts/amctest';
-//import { load } from '@amcharts/amcharts5/.internal/core/util/Net';
 
 export const appl1 = createContext("凸版印刷"); 
 export const appl2 = createContext("大日本印刷");
 
 
-const SelectBox = (props: any) => {
+const SelectBox = () => {
   const [selectedValue, setSelectedValue] = useState("凸版印刷");
   const [selectedValue2, setSelectedValue2] = useState("大日本印刷");
-
-  
+    
   const handleChange1:any = function (e: { value: React.SetStateAction<string>; }) {
       setSelectedValue(e.value);
       console.log(e.value);

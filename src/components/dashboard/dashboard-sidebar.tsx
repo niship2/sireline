@@ -54,7 +54,7 @@ interface Section {
 
 const getSections = (t: TFunction): Section[] => [
   {
-    title: t('メニュー'),
+    title: t('ダッシュボードメニュー'),
     items: [
       {
         title: t('特許ランキング'),
@@ -81,11 +81,11 @@ const getSections = (t: TFunction): Section[] => [
         icon: <ShoppingBagIcon fontSize="small" />,
         children: [
           {
-            title: t('コンパラ'),
+            title: t('コンパラマップ'),
             path: '/dashboard/products'
           },
           {
-            title: t('類似企業'),
+            title: t('類似企業分析'),
             path: '/dashboard/products/new'
           }
         ]
@@ -128,15 +128,10 @@ const getSections = (t: TFunction): Section[] => [
     ]
   },
   {
-    title: t('General'),
+    title: t('その他'),
     items: [
       {
-        title: t('Overview'),
-        path: '/dashboard',
-        icon: <HomeIcon fontSize="small" />
-      },
-      {
-        title: t('Account'),
+        title: t('マイページ'),
         path: '/dashboard/account',
         icon: <UserCircleIcon fontSize="small" />
       },
@@ -146,11 +141,11 @@ const getSections = (t: TFunction): Section[] => [
         icon: <LockClosedIcon fontSize="small" />,
         children: [
           {
-            title: t('Register'),
+            title: t('ユーザ登録'),
             path: '/authentication/register?disableGuard=true'
           },
           {
-            title: t('Login'),
+            title: t('ログイン'),
             path: '/authentication/login?disableGuard=true'
           }
         ]
@@ -215,9 +210,9 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
           }}
         >
           <div>
-            <Box sx={{ p: 3 }}>
+            <Box sx={{ p: 1 }}>
               <NextLink
-                href="/"
+                href="/dashboard"
                 passHref
               >
                 <a>
@@ -234,7 +229,7 @@ export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
           <Divider
             sx={{
               borderColor: '#2D3748', // dark divider
-              my: 3
+              my: 0.1
             }}
           />
           <Box sx={{ flexGrow: 1 }}>

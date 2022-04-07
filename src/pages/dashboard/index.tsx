@@ -77,7 +77,7 @@ const Overview: NextPage = () => {
             >
               <Grid item>
                 <Typography variant="h4">
-                  Technology Size OVERVIEW
+                  OVERVIEW
                 </Typography>
               </Grid>
               <Grid

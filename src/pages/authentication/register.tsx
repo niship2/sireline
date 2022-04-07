@@ -118,14 +118,7 @@ const Register: NextPage = () => {
                 </a>
               </NextLink>
               <Typography variant="h4">
-                Register
-              </Typography>
-              <Typography
-                color="textSecondary"
-                sx={{ mt: 2 }}
-                variant="body2"
-              >
-                Register on the internal platform
+               ユーザ登録
               </Typography>
             </Box>
             <Box

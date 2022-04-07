@@ -1,5 +1,5 @@
-//import type { IncomingMessage, ServerResponse } from 'http'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { IncomingMessage, ServerResponse } from 'http'
+//import type { NextApiRequest, NextApiResponse } from 'next'
 import { BigQuery} from '@google-cloud/bigquery'
 
 export interface Compdata {
@@ -14,8 +14,8 @@ export interface Compdata {
     B_total_val: number
   }
   
-//export default async(req: IncomingMessage, res: ServerResponse) => {
-export default async(req: NextApiRequest, res: NextApiResponse ) => {
+export default async(req: IncomingMessage, res: ServerResponse) => {
+//export default async(req: NextApiRequest, res: NextApiResponse ) => {
 
     const bigquery = new BigQuery({
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -25,10 +25,10 @@ export default async(req: NextApiRequest, res: NextApiResponse ) => {
       }
     });
   
-    //console.log(req.body)
+    console.log(req)
     
-    const applicant1 = req.query.applicant1;
-    const applicant2 = req.query.applicant2;
+    const applicant1 = "凸版印刷"//req.query.applicant1;
+    const applicant2 = "大日本印刷"//req.query.applicant2;
 
     const query = "WITH Atable AS (\
         SELECT maingroup,-1 * COUNT(*) as A_appcount,-1 * SUM(TS_deviation_normalized) as A_sum_TS_deviation_normalized,-1 * SUM(ATTENTION) as A_sum_ATTENTION,-1 * SUM(TS_deviation_normalized+ATTENTION) as A_sum_total_val \
@@ -63,6 +63,6 @@ export default async(req: NextApiRequest, res: NextApiResponse ) => {
     // Wait for the query to finish
     const [rows] = await job.getQueryResults();
     const result: Compdata[] = rows
-    return res.status(200).json({"compdata":result })
+    //return res.status(200).json({"compdata":result })
 
   }   

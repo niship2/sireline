@@ -137,11 +137,7 @@ const ProductList: NextPage = () => {
               justifyContent="space-between"
               spacing={3}
             >
-              <Grid item>
-                <Typography variant="h4">
-                  2社比較
-                </Typography>
-              </Grid>
+
 
             </Grid>
             <Box

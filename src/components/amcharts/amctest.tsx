@@ -3,17 +3,18 @@ import React, { useRef,useState, useLayoutEffect,useEffect ,useContext} from 're
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import { Box, Button, Container, Divider, Grid, Typography } from '@mui/material';
 import { resolve } from 'path/posix';
 import { appl1,appl2 } from '../selectbox'
 import Select from 'react-select'
 import { number } from 'prop-types';
 
-
 type Props = {
   children?: string;
 };
 
-function loadData(props: any) {
+
+function Comp1vis(props: any) {
   const [applicant1,setAppl] = useState("キヤノン株式会社")
   const [applicant2,setAppl2] = useState("テルモ株式会社")
   const [count, setCount] = useState(0)
@@ -34,8 +35,10 @@ function loadData(props: any) {
     { value: 'トッパン・', label: 'トッパン・' },
   ]
 
+
   
-  console.log(applicant1)
+
+  //console.log(applicant1)
   useLayoutEffect(() => {
         
         let root = am5.Root.new("chartdiv3");
@@ -56,16 +59,12 @@ function loadData(props: any) {
 
 
         // Load external data
-        let url = "/api/compdata?applicant1=" + applicant1 + "&applicant2=" + applicant2;
+        //let url = "/api/compdata?applicant1=" + applicant1 + "&applicant2=" + applicant2;
+        let url = "https://us-central1-techsize.cloudfunctions.net/get_comp1?applicant1=" + applicant1 + "&applicant2=" + applicant2;
   
         // Handle loaded data
         am5.net.load(url).then((result)=> {
-  
-          // Parse loaded data 
-          let jsdata:string = result.response as string;
-          const data = JSON.parse(jsdata).compdata
-      
-    
+          const data = am5.JSONParser.parse(result.response);
           chart.getNumberFormatter().set("numberFormat", "#.#s");
           let legend = chart.children.push(
             am5.Legend.new(root, {
@@ -141,10 +140,10 @@ function loadData(props: any) {
       
             let label = rangeDataItem.get("label");
             label.setAll({
-              text: field.toUpperCase(),
+              text: "",//.toUpperCase(),
               fontSize: "1.1em",
               fill: series.get("stroke"),
-              paddingTop: 10,
+              paddingTop: 0,
               isMeasured: false,
               centerX: labelCenterX
             });
@@ -165,7 +164,7 @@ function loadData(props: any) {
         }).catch(function(result) {
           // This gets executed if there was an error loading URL
           // ... handle error
-          console.log("Error loading " + result.xhr.responseURL);
+          console.log("Error loading " + result.response);
         });
   
       //}
@@ -181,21 +180,32 @@ function loadData(props: any) {
     );
     return (
       <div>
-        <Select options={options}
+        <Container maxWidth="lg">
+        <Grid container spacing={1}>
+      <Grid item xs={5}>
+      <Select options={options}
         value={options.find(obj => obj.value === applicant1)}
         onChange = {applchange}
         isSearchable
         />
-        <Select options={options}
+      </Grid>
+      <Grid item xs={1}>
+        vs.
+      </Grid>
+      <Grid item xs={5}>
+      <Select options={options}
         value={options.find(obj => obj.value === applicant2)}
         onChange={applchange2}
         />
-        
-        <h2>{ applicant1 } vs.{applicant2}</h2>
-        <div id="chartdiv3" style={{ width: "100%", height: "1000px" }}></div>
+
+      </Grid>
+    </Grid>
+    <div id="chartdiv3" style={{ width: "100%", height: "1000px" }}></div>
+        </Container>
+
       </div>
       );
   }
 
 
-  export default loadData;
+  export default Comp1vis;
