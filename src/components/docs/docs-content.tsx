@@ -3,9 +3,9 @@ import Markdown from 'react-markdown';
 import type { Components, CodeComponent } from 'react-markdown/lib/ast-to-react';
 import PropTypes from 'prop-types';
 // @ts-ignore
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+//import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // @ts-ignore
-import dracula from 'react-syntax-highlighter/dist/esm/styles/prism/dracula';
+//import dracula from 'react-syntax-highlighter/dist/esm/styles/prism/dracula';
 import { styled } from '@mui/material/styles';
 
 // NOTE: To reduce the bundle size, we did not include react-syntax-highlighter types package.
@@ -42,13 +42,7 @@ const Code: CodeComponent = (props) => {
   const match = /language-(\w+)/.exec(className || '');
 
   return !inline && match ? (
-    <SyntaxHighlighter
-      children={String(children).replace(/\n$/, '')}
-      style={dracula}
-      language={match[1]}
-      PreTag="div"
-      {...other}
-    />
+    <div />
   ) : (
     <code
       className={className}
