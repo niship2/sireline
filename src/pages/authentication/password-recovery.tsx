@@ -30,7 +30,7 @@ const PasswordRecovery: NextPage = () => {
     <>
       <Head>
         <title>
-          Password Recovery | Material Kit Pro
+          Password Recovery | Techsize
         </title>
       </Head>
       <Box

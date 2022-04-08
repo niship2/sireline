@@ -17,7 +17,7 @@ const Contact: NextPage = () => {
     <>
       <Head>
         <title>
-          Contact | Material Kit Pro
+          Contact | Techsize
         </title>
       </Head>
       <Box

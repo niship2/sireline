@@ -41,7 +41,7 @@ const BlogPostList: NextPage = () => {
     <>
       <Head>
         <title>
-          Blog: Post List | Material Kit Pro
+          Blog: Post List | Techsize
         </title>
       </Head>
       <Box

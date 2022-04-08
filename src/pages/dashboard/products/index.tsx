@@ -120,7 +120,7 @@ const ProductList: NextPage = () => {
     <>
       <Head>
         <title>
-          Dashboard: Product List | Material Kit Pro
+          Dashboard: Product List | Techsize
         </title>
       </Head>
       <Box

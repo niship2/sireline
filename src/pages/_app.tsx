@@ -49,7 +49,7 @@ const App: FC<EnhancedAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          Material Kit Pro
+          Technologysize Dashoboard
         </title>
         <meta
           name="viewport"

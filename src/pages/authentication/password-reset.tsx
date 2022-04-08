@@ -33,7 +33,7 @@ const PasswordReset: NextPage = () => {
     <>
       <Head>
         <title>
-          Password Reset | Material Kit Pro
+          Password Reset | Techsize
         </title>
       </Head>
       <Box

@@ -33,7 +33,7 @@ const VerifyCode: NextPage = () => {
     <>
       <Head>
         <title>
-          Verify Code | Material Kit Pro
+          Verify Code | Techsize
         </title>
       </Head>
       <Box

@@ -186,7 +186,7 @@ const InvoiceList: NextPage = () => {
     <>
       <Head>
         <title>
-          Dashboard: Invoice List | Material Kit Pro
+          Dashboard: Invoice List | Techsize
         </title>
       </Head>
       <Box

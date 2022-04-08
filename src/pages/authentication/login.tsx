@@ -37,7 +37,7 @@ const Login: NextPage = () => {
     <>
       <Head>
         <title>
-          Login | Material Kit Pro
+          Login | Techsize
         </title>
       </Head>
       <Box

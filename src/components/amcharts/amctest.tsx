@@ -16,7 +16,7 @@ type Props = {
 
 function Comp1vis(props: any) {
   const [applicant1,setAppl] = useState("キヤノン株式会社")
-  const [applicant2,setAppl2] = useState("テルモ株式会社")
+  const [applicant2,setAppl2] = useState("株式会社リコー")
   const [count, setCount] = useState(0)
   
   const applchange:any= (e: { value: React.SetStateAction<string>; }) => {
@@ -75,7 +75,7 @@ function Comp1vis(props: any) {
 
           let yAxis = chart.yAxes.push(
             am5xy.CategoryAxis.new(root, {
-              categoryField: "maingroup",
+              categoryField: "wipo_clas",
               renderer: am5xy.AxisRendererY.new(root, {
                 inversed: true,
                 cellStartLocation: 0.1,
@@ -97,7 +97,7 @@ function Comp1vis(props: any) {
                 xAxis: xAxis,
                 yAxis: yAxis,
                 valueXField: field,
-                categoryYField: "maingroup",
+                categoryYField: "wipo_clas",
                 sequencedInterpolation: true,
                 clustered: false,
                 tooltip: am5.Tooltip.new(root, {
@@ -200,8 +200,14 @@ function Comp1vis(props: any) {
 
       </Grid>
     </Grid>
-    <div id="chartdiv3" style={{ width: "100%", height: "1000px" }}></div>
-        </Container>
+    </Container>
+
+    
+    <Container maxWidth="lg">
+      <Grid>
+        <div id="chartdiv3" style={{ width: "100%", height: "1000px" }}></div>
+      </Grid>
+    </Container>
 
       </div>
       );

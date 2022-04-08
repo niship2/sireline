@@ -36,7 +36,7 @@ const Register: NextPage = () => {
     <>
       <Head>
         <title>
-          Register | Material Kit Pro
+          Register | Techsize
         </title>
       </Head>
       <Box

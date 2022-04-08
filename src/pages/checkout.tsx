@@ -98,7 +98,7 @@ const Checkout: NextPage = () => {
     <>
       <Head>
         <title>
-          Checkout | Material Kit Pro
+          Checkout | Techsize
         </title>
       </Head>
       <Box

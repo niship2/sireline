@@ -49,7 +49,7 @@ interface SortOption {
   value: Sort;
 }
 
-type TabValue = 'all' | 'hasAcceptedMarketing' | 'isProspect' | 'isReturning';
+type TabValue = '総合ランキング' | '産業別ランキング' | '出願年別ランキング' | '技術分野別ランキング' | '企業規模別ランキング' ;
 
 interface Tab {
   label: string;
@@ -58,20 +58,24 @@ interface Tab {
 
 const tabs: Tab[] = [
   {
-    label: 'All',
-    value: 'all'
+    label: '総合ランキング',
+    value: '総合ランキング'
   },
   {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing'
+    label: '産業別ランキング',
+    value: '産業別ランキング'
   },
   {
-    label: 'Prospect',
-    value: 'isProspect'
+    label: '企業規模別ランキング',
+    value: '企業規模別ランキング'
   },
   {
-    label: 'Returning',
-    value: 'isReturning'
+    label: '出願年別ランキング',
+    value: '出願年別ランキング'
+  },
+  {
+    label: '技術分野別ランキング',
+    value: '技術分野別ランキング'
   }
 ];
 
@@ -260,7 +264,7 @@ const CustomerList: NextPage = () => {
     <>
       <Head>
         <title>
-          Dashboard: Customer List | Material Kit Pro
+          Dashboard: TS値ランキング
         </title>
       </Head>
       <Box
@@ -297,18 +301,6 @@ const CustomerList: NextPage = () => {
                 mt: 3
               }}
             >
-              <Button
-                startIcon={<UploadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
-                Import
-              </Button>
-              <Button
-                startIcon={<DownloadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
-                Export
-              </Button>
             </Box>
           </Box>
           <Card>
@@ -358,7 +350,7 @@ const CustomerList: NextPage = () => {
                       </InputAdornment>
                     )
                   }}
-                  placeholder="Search customers"
+                  placeholder="企業検索"
                 />
               </Box>
               <TextField

@@ -44,7 +44,7 @@ export const OverviewTotalBalance: FC = (props) => (
         color="textSecondary"
         variant="h4"
       >
-        注目企業
+        知的財産に関する KPI 
       </Typography>
       <Typography variant="h4">
         {numeral(3787681).format('$0,0.00')}

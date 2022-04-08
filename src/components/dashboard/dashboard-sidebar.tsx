@@ -124,6 +124,55 @@ const getSections = (t: TFunction): Section[] => [
             path: '/dashboard/invoices/1'
           }
         ]
+      },
+      {
+        title: t('知的財産に関する KPI '),
+        path: '/dashboard/invoices',
+        icon: <ReceiptTaxIcon fontSize="small" />,
+        children: [
+          {
+            title: t('各分野重要特許件数'),
+            path: '/dashboard/invoices'
+          },
+          {
+            title: t('重要特許のシェア率'),
+            path: '/dashboard/invoices/1'
+          },
+          {
+            title: t('両利きの経営度'),
+            path: '/dashboard/invoices/1'
+          },
+          {
+            title: t('平均競合優位度'),
+            path: '/dashboard/invoices/1'
+          },
+          {
+            title: t('効率的な知的財産の取得'),
+            path: '/dashboard/invoices/1',
+            children: [
+              {
+                title: t('知財創出⼒'),
+                path: '/dashboard/invoices/1'
+              },
+              {
+                title: t('R&D成果の有効権利化率'),
+                path: '/dashboard/invoices/1'
+              },
+              {
+                title: t('特許出願効率'),
+                path: '/dashboard/invoices/1'
+              },
+              {
+                title: t('重要特許取得率'),
+                path: '/dashboard/invoices/1'
+              },
+              {
+                title: t('グローバル出願率'),
+                path: '/dashboard/invoices/1'
+              }
+            ]
+          }
+        ]
       }
     ]
   },

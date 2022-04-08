@@ -58,7 +58,7 @@ const Overview: NextPage = () => {
     <>
       <Head>
         <title>
-          Dashboard: Overview | Material Kit Pro
+          Dashboard: Overview | Techsize
         </title>
       </Head>
       <Box

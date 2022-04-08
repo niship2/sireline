@@ -66,7 +66,7 @@ const transactions: Transaction[] = [
 
 export const OverviewLatestTransactions: FC = (props) => (
   <Card {...props}>
-    <CardHeader title="注目企業" />
+    <CardHeader title="知的財産に関する KPI " />
     <Scrollbar>
       <Table sx={{ minWidth: 600 }}>
         <TableHead>
