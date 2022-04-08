@@ -49,7 +49,7 @@ interface SortOption {
   value: Sort;
 }
 
-type TabValue = '総合ランキング' | '産業別ランキング' | '出願年別ランキング' | '技術分野別ランキング' | '企業規模別ランキング' ;
+type TabValue = '総合ランキング' | '産業別ランキング' | '出願年別ランキング' | '技術分野別ランキング' | '企業規模別ランキング'|'all' ;
 
 interface Tab {
   label: string;
@@ -227,9 +227,9 @@ const CustomerList: NextPage = () => {
       isReturning: undefined
     };
 
-    if (value !== 'all') {
-      updatedFilters[value] = true;
-    }
+    //if (value !== 'all') {
+    //  updatedFilters[value] = true;
+    //}
 
     setFilters(updatedFilters);
     setCurrentTab(value);
