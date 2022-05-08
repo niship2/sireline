@@ -8,8 +8,7 @@ COPY ./package.json ./package.json
 COPY ./package-lock.json ./package-lock.json
 COPY ./tsconfig.json ./tsconfig.json
 
-RUN npm ci && npm run build && 
-    groupadd -r next && useradd -r -g next next && chown -R next:next .next
+RUN npm ci && npm run build groupadd -r next && useradd -r -g next next && chown -R next:next .next
 
 USER next
 CMD ["npm", "run", "start"]
