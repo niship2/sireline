@@ -62,19 +62,19 @@ const tabs: Tab[] = [
     value: 'all'
   },
   {
-    label: '産業別ランキング',
+    label: 'all2',
     value: 'all2'
   },
   {
-    label: '企業規模別ランキング',
+    label: 'all3',
     value: 'all3'
   },
   {
-    label: '出願年別ランキング',
+    label: 'all4',
     value: 'all4'
   },
   {
-    label: '技術分野別ランキング',
+    label: 'all5',
     value: 'all5'
   }
 ];
@@ -227,9 +227,9 @@ const CustomerList: NextPage = () => {
       isReturning: undefined
     };
 
-    if (value !== 'all') {
-      updatedFilters[value] = true;
-    }
+    //if (value !== 'all') {
+    //  updatedFilters[value] = true;
+    //};
 
     setFilters(updatedFilters);
     setCurrentTab(value);

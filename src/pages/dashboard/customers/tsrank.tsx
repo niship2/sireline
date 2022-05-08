@@ -157,7 +157,7 @@ const CustomerList: NextPage = () => {
     };
 
     if (value !== 'all') {
-      updatedFilters[value] = true;
+      //updatedFilters[value] = true;
     }
 
     setFilters(updatedFilters);
