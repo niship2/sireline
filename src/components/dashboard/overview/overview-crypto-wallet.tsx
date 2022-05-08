@@ -5,6 +5,7 @@ import { alpha, useTheme } from '@mui/material/styles';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
 import { Chart } from '../../chart';
+import Link from 'next/link'
 
 export const OverviewCryptoWallet: FC = (props) => {
   const theme = useTheme();
@@ -112,9 +113,11 @@ export const OverviewCryptoWallet: FC = (props) => {
       </Box>
       <Divider />
       <CardActions>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />}>
-         詳細はこちら
-        </Button>
+        <Link href="/dashboard/customers" passHref>
+          <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+          詳細はこちら
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

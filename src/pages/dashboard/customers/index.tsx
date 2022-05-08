@@ -49,7 +49,7 @@ interface SortOption {
   value: Sort;
 }
 
-type TabValue = '総合ランキング' | '産業別ランキング' | '出願年別ランキング' | '技術分野別ランキング' | '企業規模別ランキング'|'all' ;
+type TabValue = 'all' | 'all2' | 'all3' | 'all4' | 'all5';
 
 interface Tab {
   label: string;
@@ -58,24 +58,24 @@ interface Tab {
 
 const tabs: Tab[] = [
   {
-    label: '総合ランキング',
-    value: '総合ランキング'
+    label: 'all',
+    value: 'all'
   },
   {
     label: '産業別ランキング',
-    value: '産業別ランキング'
+    value: 'all2'
   },
   {
     label: '企業規模別ランキング',
-    value: '企業規模別ランキング'
+    value: 'all3'
   },
   {
     label: '出願年別ランキング',
-    value: '出願年別ランキング'
+    value: 'all4'
   },
   {
     label: '技術分野別ランキング',
-    value: '技術分野別ランキング'
+    value: 'all5'
   }
 ];
 
@@ -227,9 +227,9 @@ const CustomerList: NextPage = () => {
       isReturning: undefined
     };
 
-    //if (value !== 'all') {
-    //  updatedFilters[value] = true;
-    //}
+    if (value !== 'all') {
+      updatedFilters[value] = true;
+    }
 
     setFilters(updatedFilters);
     setCurrentTab(value);

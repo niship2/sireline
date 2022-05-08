@@ -63,7 +63,7 @@ const getSections = (t: TFunction): Section[] => [
         children: [
           {
             title: t('TS値ランキング'),
-            path: '/dashboard/customers'
+            path: '/dashboard/customers/tsrank'
           },
           {
             title: t('TS値＊注目度'),
@@ -96,7 +96,7 @@ const getSections = (t: TFunction): Section[] => [
         path: '/dashboard/orders',
         children: [
           {
-            title: t('重要特許'),
+            title: t('知財力＊与信力'),
             path: '/dashboard/orders'
           },
           {
@@ -116,62 +116,40 @@ const getSections = (t: TFunction): Section[] => [
         icon: <ReceiptTaxIcon fontSize="small" />,
         children: [
           {
-            title: t('List'),
+            title: t('技術ニーズ探索'),
             path: '/dashboard/invoices'
           },
           {
-            title: t('Details'),
+            title: t('マッチング分析'),
             path: '/dashboard/invoices/1'
           }
         ]
       },
       {
-        title: t('知的財産に関する KPI '),
+        title: t('総合分析 '),
         path: '/dashboard/invoices',
         icon: <ReceiptTaxIcon fontSize="small" />,
         children: [
           {
-            title: t('各分野重要特許件数'),
+            title: t('時系列データ'),
             path: '/dashboard/invoices'
           },
           {
-            title: t('重要特許のシェア率'),
+            title: t('注目度'),
             path: '/dashboard/invoices/1'
           },
+          {
+            title: t('テクノロジーサイズ'),
+            path: '/dashboard/invoices/1'
+          },
+          {
+            title: t('重要特許シェア率'),
+            path: '/dashboard/invoices/1'
+          },          
           {
             title: t('両利きの経営度'),
             path: '/dashboard/invoices/1'
           },
-          {
-            title: t('平均競合優位度'),
-            path: '/dashboard/invoices/1'
-          },
-          {
-            title: t('効率的な知的財産の取得'),
-            path: '/dashboard/invoices/1',
-            children: [
-              {
-                title: t('知財創出⼒'),
-                path: '/dashboard/invoices/1'
-              },
-              {
-                title: t('R&D成果の有効権利化率'),
-                path: '/dashboard/invoices/1'
-              },
-              {
-                title: t('特許出願効率'),
-                path: '/dashboard/invoices/1'
-              },
-              {
-                title: t('重要特許取得率'),
-                path: '/dashboard/invoices/1'
-              },
-              {
-                title: t('グローバル出願率'),
-                path: '/dashboard/invoices/1'
-              }
-            ]
-          }
         ]
       }
     ]
@@ -179,11 +157,11 @@ const getSections = (t: TFunction): Section[] => [
   {
     title: t('その他'),
     items: [
-      {
-        title: t('マイページ'),
-        path: '/dashboard/account',
-        icon: <UserCircleIcon fontSize="small" />
-      },
+      //{
+      //  title: t('マイページ'),
+      //  path: '/dashboard/account',
+      //  icon: <UserCircleIcon fontSize="small" />
+      //},
       {
         title: t('Auth'),
         path: '/authentication',
