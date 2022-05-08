@@ -23,11 +23,11 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
-# COPY --from=builder /app/next.config.js ./
-COPY --from=builder /public ./public
-COPY --from=builder --chown=nextjs:nodejs /.next ./.next
-COPY --from=builder /node_modules ./node_modules
-COPY --from=builder /package.json ./package.json
+COPY --from=builder /next.config.js ./
+# COPY --from=builder /public ./public
+# COPY --from=builder --chown=nextjs:nodejs /.next ./.next
+# COPY --from=builder /node_modules ./node_modules
+# COPY --from=builder /package.json ./package.json
 
 USER nextjs
 
@@ -40,4 +40,5 @@ ENV PORT 3000
 # Uncomment the following line in case you want to disable telemetry.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["node_modules/.bin/next", "start"]
+CMD ["yarn", "start"]
+#CMD ["node_modules/.bin/next", "start"]
