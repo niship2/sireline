@@ -49,7 +49,7 @@ interface SortOption {
   value: Sort;
 }
 
-type TabValue = 'all' | 'all2' | 'all3' | 'all4' | 'all5';
+type TabValue = 'all' | 'hasAcceptedMarketing' | 'isProspect' | 'isReturning';
 
 interface Tab {
   label: string;
@@ -58,24 +58,20 @@ interface Tab {
 
 const tabs: Tab[] = [
   {
-    label: 'all',
+    label: 'All',
     value: 'all'
   },
   {
-    label: 'all2',
-    value: 'all2'
+    label: 'Accepts Marketing',
+    value: 'hasAcceptedMarketing'
   },
   {
-    label: 'all3',
-    value: 'all3'
+    label: 'Prospect',
+    value: 'isProspect'
   },
   {
-    label: 'all4',
-    value: 'all4'
-  },
-  {
-    label: 'all5',
-    value: 'all5'
+    label: 'Returning',
+    value: 'isReturning'
   }
 ];
 
@@ -227,9 +223,9 @@ const CustomerList: NextPage = () => {
       isReturning: undefined
     };
 
-    //if (value !== 'all') {
-    //  updatedFilters[value] = true;
-    //};
+    if (value !== 'all') {
+      updatedFilters[value] = true;
+    }
 
     setFilters(updatedFilters);
     setCurrentTab(value);
@@ -264,7 +260,7 @@ const CustomerList: NextPage = () => {
     <>
       <Head>
         <title>
-          Dashboard: TS値ランキング
+          Dashboard: Customer List | Material Kit Pro
         </title>
       </Head>
       <Box
@@ -301,6 +297,18 @@ const CustomerList: NextPage = () => {
                 mt: 3
               }}
             >
+              <Button
+                startIcon={<UploadIcon fontSize="small" />}
+                sx={{ m: 1 }}
+              >
+                Import
+              </Button>
+              <Button
+                startIcon={<DownloadIcon fontSize="small" />}
+                sx={{ m: 1 }}
+              >
+                Export
+              </Button>
             </Box>
           </Box>
           <Card>
@@ -350,7 +358,7 @@ const CustomerList: NextPage = () => {
                       </InputAdornment>
                     )
                   }}
-                  placeholder="企業検索"
+                  placeholder="Search customers"
                 />
               </Box>
               <TextField

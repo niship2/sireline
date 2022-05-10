@@ -17,12 +17,12 @@ import {
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
 import { OverviewBanner } from '../../components/dashboard/overview/overview-banner';
-import { OverviewCryptoWallet } from '../../components/dashboard/overview/overview-crypto-wallet';
-import { OverviewInbox } from '../../components/dashboard/overview/overview-inbox';
-import { OverviewLatestTransactions } from '../../components/dashboard/overview/overview-latest-transactions';
-import { OverviewPrivateWallet } from '../../components/dashboard/overview/overview-private-wallet';
-import { OverviewTotalBalance } from '../../components/dashboard/overview/overview-total-balance';
-import { OverviewTotalTransactions } from '../../components/dashboard/overview/overview-total-transactions';
+import { OverviewTSRank } from '../../components/dashboard/overview/overview-ts-rank';
+import { OverviewInbox } from '../../components/dashboard/overview/overview-att-inventor';
+import { OverviewAttComp } from '../../components/dashboard/overview/overview-att-comp';
+import { OverviewCompreport } from '../../components/dashboard/overview/overview-compreport';
+import { OverviewRisk } from '../../components/dashboard/overview/overview-risk';
+import { OverviewTotalTransactions } from '../../components/dashboard/overview/overview-timeseries';
 import { ArrowRight as ArrowRightIcon } from '../../icons/arrow-right';
 import { Briefcase as BriefcaseIcon } from '../../icons/briefcase';
 import { Download as DownloadIcon } from '../../icons/download';
@@ -88,30 +88,6 @@ const Overview: NextPage = () => {
                   m: -1
                 }}
               >
-                <Button
-                  startIcon={<ReportsIcon fontSize="small" />}
-                  sx={{ m: 1 }}
-                  variant="outlined"
-                >
-                  Reports
-                </Button>
-                <TextField
-                  defaultValue="week"
-                  label="Period"
-                  select
-                  size="small"
-                  sx={{ m: 1 }}
-                >
-                  <MenuItem value="week">
-                    Last week
-                  </MenuItem>
-                  <MenuItem value="month">
-                    Last month
-                  </MenuItem>
-                  <MenuItem value="year">
-                    Last year
-                  </MenuItem>
-                </TextField>
               </Grid>
             </Grid>
           </Box>
@@ -132,15 +108,22 @@ const Overview: NextPage = () => {
               md={6}
               xs={12}
             >
-              <OverviewCryptoWallet />
+              <OverviewTSRank />
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
-              <OverviewPrivateWallet />
+              <OverviewCompreport />
             </Grid>
+            <Grid
+            item
+            md={6}
+            xs ={12}
+            >
+              <OverviewRisk />
+            </Grid>            
             <Grid
               item
               md={12}
@@ -154,7 +137,7 @@ const Overview: NextPage = () => {
               md={6}
               xs={12}
             >
-              <OverviewLatestTransactions />
+              <OverviewAttComp />
             </Grid>
             <Grid
               item

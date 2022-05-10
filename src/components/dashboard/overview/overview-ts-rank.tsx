@@ -7,7 +7,7 @@ import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
 import { Chart } from '../../chart';
 import Link from 'next/link'
 
-export const OverviewCryptoWallet: FC = (props) => {
+export const OverviewTSRank: FC = (props) => {
   const theme = useTheme();
 
   const chartOptions: ApexOptions = {

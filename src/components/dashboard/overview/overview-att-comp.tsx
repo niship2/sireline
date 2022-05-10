@@ -1,3 +1,4 @@
+//overview-latest-transactions
 import type { FC } from 'react';
 import { format, subDays } from 'date-fns';
 import numeral from 'numeral';
@@ -64,9 +65,9 @@ const transactions: Transaction[] = [
   }
 ];
 
-export const OverviewLatestTransactions: FC = (props) => (
+export const OverviewAttComp: FC = (props) => (
   <Card {...props}>
-    <CardHeader title="KPI " />
+    <CardHeader title="注目企業 " />
     <Scrollbar>
       <Table sx={{ minWidth: 600 }}>
         <TableHead>

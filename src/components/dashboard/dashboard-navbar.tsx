@@ -76,27 +76,7 @@ const LanguageButton = () => {
         ref={anchorRef}
         sx={{ ml: 1 }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            height: 20,
-            width: 20,
-            '& img': {
-              width: '100%'
-            }
-          }}
-        >
-          <img
-            alt=""
-            src={languages[i18n.language as Language]}
-          />
-        </Box>
-      </IconButton>
-      <LanguagePopover
-        anchorEl={anchorRef.current}
-        onClose={handleClosePopover}
-        open={openPopover}
-      />
+       </IconButton>
     </>
   );
 };
@@ -153,11 +133,6 @@ const ContactsButton = () => {
           <UsersIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <ContactsPopover
-        anchorEl={anchorRef.current}
-        onClose={handleClosePopover}
-        open={openPopover}
-      />
     </>
   );
 };
@@ -292,9 +267,7 @@ export const DashboardNavbar: FC<DashboardNavbarProps> = (props) => {
             <MenuIcon fontSize="small" />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <LanguageButton />
           <ContentSearchButton />
-          <ContactsButton />
           <NotificationsButton />
           <AccountButton />
         </Toolbar>

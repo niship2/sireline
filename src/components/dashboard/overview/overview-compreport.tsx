@@ -6,7 +6,7 @@ import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
 import { Chart } from '../../chart';
 
-export const OverviewPrivateWallet: FC = (props) => {
+export const OverviewCompreport: FC = (props) => {
   const theme = useTheme();
 
   const chartOptions: ApexOptions = {
