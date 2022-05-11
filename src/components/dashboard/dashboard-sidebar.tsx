@@ -58,7 +58,7 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t('特許ランキング'),
-        path: '/dashboard/customers',
+        path: '/dashboard/customers/index2',
         icon: <UsersIcon fontSize="small" />,
         children: [
           {
@@ -81,7 +81,7 @@ const getSections = (t: TFunction): Section[] => [
         icon: <ShoppingBagIcon fontSize="small" />,
         children: [
           {
-            title: t('コンパラマップ'),
+            title: t('2社比較'),
             path: '/dashboard/products'
           },
           {

@@ -389,6 +389,7 @@ const CustomerList: NextPage = () => {
               page={page}
             />
           </Card>
+          
         </Container>
       </Box>
     </>
