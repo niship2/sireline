@@ -98,7 +98,7 @@ const CustomerList: NextPage = () => {
         技術別ランキング
       </TabPanel>
       <TabPanel value={value} index={3}>
-      '企業規模別ランキング'
+        企業規模別ランキング
       </TabPanel>      
     </Box>
         </Container>
