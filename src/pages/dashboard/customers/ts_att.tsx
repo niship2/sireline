@@ -18,6 +18,7 @@ import {
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 import { gtm } from '../../../lib/gtm';
+import {CarsGrid} from '../../../components/dashboard/customer/aggrid'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -98,7 +99,7 @@ const CustomerList: NextPage = () => {
         技術別ランキング
       </TabPanel>
       <TabPanel value={value} index={3}>
-      '企業規模別ランキング'
+      <CarsGrid />
       </TabPanel>      
     </Box>
         </Container>
