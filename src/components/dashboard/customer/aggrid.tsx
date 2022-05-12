@@ -4,7 +4,7 @@ import {AgGridColumn, AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 //import { render } from 'react-dom';
-//import 'ag-grid-enterprise';
+import 'ag-grid-enterprise';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import {
@@ -19,22 +19,22 @@ import { FileWatcherEventKind } from 'typescript';
 export function CarsGrid() {
     const [rowData, setRowData] = useState();
     const [colDefs, setColDefs] = useState([
-        {field: 'H_APPLICANT',headerName:'出願人'},
+        {field: 'H_APPLICANT',headerName:'出願人',filter: 'agSetColumnFilter'},
         {field: 'headipc',headerName:'出願分野'},
         {field: 'appcount',headerName:'出願件数' 
         //,editable: 'true',
         //valueFormatter: params => params.data.number,
-        //cellRenderer: 'agSparklineCellRenderer',
-        //sparklineOptions: {
-        //  type: 'bar',
-        //  // Optional customisation properties
-        //  fill: '#5470c6',
-        //  stroke: '#91cc75',
-        //  highlightStyle: {
-        //      fill: '#fac858'
-        //  },
-        //  valueAxisDomain: [0, 1]
-        //} as BarSparklineOptions,
+        ,cellRenderer: 'agSparklineCellRenderer',
+        sparklineOptions: {
+          type: 'bar',
+          // Optional customisation properties
+          fill: '#5470c6',
+          stroke: '#91cc75',
+          highlightStyle: {
+              fill: '#fac858'
+          },
+          valueAxisDomain: [0, 1]
+        } as BarSparklineOptions,
       },
       {field: 'sumTS',headerName:'sumTS'},
       {field: 'sumATT',headerName:'sumATT'},
@@ -55,8 +55,9 @@ export function CarsGrid() {
             .then(rowData => setRowData(rowData))
     }, []);
     
+    
     return (
-       <div className="ag-theme-alpine" style={{height: 400, width: 800}}>   
+       <div className="ag-theme-alpine" style={{height: 400, width: '90%'}}>   
            <AgGridReact
                 defaultColDef={{sortable: true, filter: true }}
                 pagination={true}

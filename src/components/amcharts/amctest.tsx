@@ -12,12 +12,23 @@ import { number } from 'prop-types';
 type Props = {
   children?: string;
 };
-
+ 
 
 function Comp1vis(props: any) {
   const [applicant1,setAppl] = useState("キヤノン株式会社")
   const [applicant2,setAppl2] = useState("株式会社リコー")
   const [count, setCount] = useState(0)
+  const [options,setOptions] = useState([
+   
+  ])
+  
+  React.useEffect(() => {
+    let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/";
+    fetch(url_appl)
+    .then(result => result.json())
+        .then(rowData => setOptions(rowData))
+  }, []);
+
   
   const applchange:any= (e: { value: React.SetStateAction<string>; }) => {
     setAppl(e.value);
@@ -27,16 +38,6 @@ function Comp1vis(props: any) {
     setAppl2(e.value);
     //console.log(e.value);
   }
-
-  const options = [
-    { value: '凸版印刷', label: '凸版印刷' },
-    { value: '大日本印刷', label: '大日本印刷' },
-    { value: 'トッパン・フォームズ', label: 'トッパン・フォームズ' },
-    { value: 'トッパン・', label: 'トッパン・' },
-  ]
-
-
-  
 
   //console.log(applicant1)
   useLayoutEffect(() => {

@@ -1,11 +1,30 @@
 import type { FC } from 'react';
 import type { ApexOptions } from 'apexcharts';
 import { format } from 'date-fns';
-import { Box, Card, CardHeader, Divider,CardActions,Button,Typography } from '@mui/material';
+//import { Box, Card, CardHeader, Divider,CardActions,Button,Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
-import { Scrollbar } from '../../scrollbar';
+import {Chart} from '../../../../src/components/chart'
+//import { Chart } from '../../chart';
+import { Scrollbar } from '../../../../src/components/scrollbar';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Container,
+  Divider,
+  Grid,
+  InputAdornment,
+  Tab,
+  Tabs,
+  TextField,
+  Typography
+} from '@mui/material';
+import { AuthGuard } from '../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 
 
 
@@ -30,7 +49,7 @@ const data = {
   ]
 };
 
-export const OverviewTotalTransactions: FC = (props) => {
+const OverviewTotalTransactions: NextPage = (props) => {
   const theme = useTheme();
 
   const chartOptions: ApexOptions = {
@@ -111,6 +130,20 @@ export const OverviewTotalTransactions: FC = (props) => {
   const chartSeries = data.series;
 
   return (
+    <>
+    <Head>
+    <title>
+      TS値時系列
+    </title>
+  </Head>
+  <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          py: 8
+        }}
+      >
+        <Container maxWidth="xl">
     <Card {...props}>
         <Typography
               color="primary"
@@ -139,13 +172,19 @@ export const OverviewTotalTransactions: FC = (props) => {
           />
         </Box>
       </Scrollbar>
-      <Divider />
-      <CardActions>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />}>
-          詳細はこちら
-        </Button>
-      </CardActions>
-
     </Card>
+    </Container>
+    </Box>
+    </>
   );
 };
+
+OverviewTotalTransactions.getLayout = (page) => (
+  <AuthGuard>
+    <DashboardLayout>
+      {page}
+    </DashboardLayout>
+  </AuthGuard>
+);
+
+export default OverviewTotalTransactions;

@@ -63,11 +63,11 @@ const getSections = (t: TFunction): Section[] => [
         children: [
           {
             title: t('TS値ランキング'),
-            path: '/dashboard/customers/index2'
+            path: '/dashboard/customers/ts_att'
           },
           {
             title: t('TS値＊注目度'),
-            path: '/dashboard/customers/ts_att'
+            path: '/dashboard/customers/index2'
           },
           {
             title: t('TS値時系列変化'),
