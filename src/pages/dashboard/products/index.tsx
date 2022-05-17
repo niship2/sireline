@@ -153,12 +153,12 @@ const ProductList: NextPage = () => {
           <Card>
            
             <ProductListTable
-              onPageChange={handlePageChange}
-              onRowsPerPageChange={handleRowsPerPageChange}
-              page={page}
-              products={paginatedProducts}
-              productsCount={filteredProducts.length}
-              rowsPerPage={rowsPerPage}
+              //onPageChange={handlePageChange}
+              //onRowsPerPageChange={handleRowsPerPageChange}
+              //page={page}
+              //products={paginatedProducts}
+              //productsCount={filteredProducts.length}
+              //rowsPerPage={rowsPerPage}
             />
           </Card>
         </Container>

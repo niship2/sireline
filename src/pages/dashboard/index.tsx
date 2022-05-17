@@ -132,20 +132,8 @@ const Overview: NextPage = () => {
 
               <OverviewTotalTransactions />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <OverviewAttComp />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <OverviewInbox />
-            </Grid>
+
+
             <Grid
               item
               md={6}

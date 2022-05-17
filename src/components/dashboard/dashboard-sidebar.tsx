@@ -101,11 +101,15 @@ const getSections = (t: TFunction): Section[] => [
           },
           {
             title: t('知財リスク評価'),
-            path: '/dashboard/orders/1'
+            path: '/dashboard/'
           },
           {
             title: t('業界別侵害事例'),
-            path: '/dashboard/orders/1'
+            path: '/dashboard/'
+          },
+          {
+            title: t('知財保険情報'),
+            path: '/dashboard/'
           }
 
         ]

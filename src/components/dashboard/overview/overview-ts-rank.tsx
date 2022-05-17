@@ -59,11 +59,11 @@ export const OverviewTSRank: FC = (props) => {
         }}
       >
         <Chart
-          height={160}
+          height={100}
           options={chartOptions}
           series={chartSeries}
           type="radialBar"
-          width={160}
+          width={100}
         />
         <Box
           sx={{

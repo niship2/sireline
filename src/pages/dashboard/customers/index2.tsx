@@ -89,16 +89,16 @@ const CustomerList: NextPage = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        総合ランキング
+        総合
       </TabPanel>
       <TabPanel value={value} index={1}>
-        業界別ランキング
+        業界別
       </TabPanel>
       <TabPanel value={value} index={2}>
-        技術別ランキング
+        技術別
       </TabPanel>
       <TabPanel value={value} index={3}>
-        企業規模別ランキング
+        企業規模別
       </TabPanel>      
     </Box>
         </Container>

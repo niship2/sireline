@@ -35,6 +35,18 @@ export const HomeHero: FC = (props) => {
             }
           }}
         >
+                    <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              普通のダッシュボード
+            </Button>
+          </NextLink>          
           <NextLink
             href="/dashboard"
             passHref
@@ -44,7 +56,7 @@ export const HomeHero: FC = (props) => {
               size="large"
               variant="contained"
             >
-              無料版はこちら
+              VC向けダッシュボード
             </Button>
           </NextLink>
           <NextLink
@@ -56,9 +68,57 @@ export const HomeHero: FC = (props) => {
               size="large"
               variant="contained"
             >
-              有料版はこちら
+              大学発ベンチャー向けダッシュボード
             </Button>
-          </NextLink>          
+          </NextLink>    
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              M&A先の探索
+            </Button>
+          </NextLink>        
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              相手を知財から調べたい
+            </Button>
+          </NextLink>  
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              技術シーズからの探索
+            </Button>
+          </NextLink> 
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              攻めと守りの観点
+            </Button>
+          </NextLink>                                    
         </Box>
       </Container>
     </Box>

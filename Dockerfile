@@ -17,21 +17,24 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 FROM node:alpine AS runner
 WORKDIR /
 
-ENV NODE_ENV production
+ENV NODE_ENV development
+#ENV NODE_ENV production
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+#RUN addgroup -g 1001 -S nodejs
+#RUN adduser -S nextjs -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
-COPY --from=builder /next.config.js ./
-# COPY --from=builder /public ./public
-# COPY --from=builder --chown=nextjs:nodejs /.next ./.next
-# COPY --from=builder /node_modules ./node_modules
-# COPY --from=builder /package.json ./package.json
+#COPY --from=builder /next.config.js ./
+COPY --from=builder /public ./public
+COPY --from=builder --chown=nextjs:nodejs /.next ./.next
+COPY --from=builder /node_modules ./node_modules
+COPY --from=builder /package.json ./package.json
 
-USER nextjs
 
-EXPOSE 3000
+#rootで起動しちゃってるので、権限を設定すること!!
+#USER nextjs
+
+EXPOSE 8080
 
 ENV PORT 3000
 
@@ -40,5 +43,5 @@ ENV PORT 3000
 # Uncomment the following line in case you want to disable telemetry.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
 #CMD ["node_modules/.bin/next", "start"]
