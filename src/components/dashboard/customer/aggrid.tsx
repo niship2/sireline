@@ -1,4 +1,5 @@
 import React, {useState,useRef,useCallback} from 'react';
+import type { FC } from 'react';
 import {AgGridColumn, AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -12,17 +13,29 @@ import {
   ColGroupDef,
   Grid,
   GridOptions,
+  ValueGetterParams,
+  ValueFormatterParams
 } from 'ag-grid-community';
 
 
-export function CarsGrid() {
+function NumFormatter(params: ValueFormatterParams) {
+  return Number(params.value);
+}
+
+type PropsWithChild = {
+  field: String;
+  height: Number;
+};
+
+//const ExWithChildFC: React.FC<PropsOptional> = ({ x = 10, y, children }) => {
+//export function CarsGrid() {
+export const CarsGrid: FC = ({field='all',height=800}:PropsWithChild)=>{  
+    
     const [rowData, setRowData] = useState();
     const [colDefs, setColDefs] = useState([
         {field: 'H_APPLICANT',headerName:'出願人',filter: 'agSetColumnFilter',pinned: "left"},
-        {field: 'headipc',headerName:'出願分野'},
-        {field: 'appcount',headerName:'出願件数' 
-        //,editable: 'true',
-        //,valueFormatter: params => params.data.array
+        {field: 'appcount2',headerName:'出願件数' 
+        ,valueFormatter: NumFormatter
         ,cellRenderer: 'agSparklineCellRenderer',
         cellRendererParams: {
         sparklineOptions: {
@@ -31,7 +44,7 @@ export function CarsGrid() {
             enabled: true // show bar labels
           },
           // Optional customisation properties
-          fill: '#5470c6',
+          fill: 'lightgreen',
           stroke: '#91cc75',
           highlightStyle: {
               fill: '#fac858'
@@ -40,7 +53,7 @@ export function CarsGrid() {
         } as BarSparklineOptions,
         },
       },
-
+      {field: 'headipc',headerName:'出願分野'},
       {field: 'sumTS',headerName:'sumTS'},
       {field: 'sumATT',headerName:'sumATT'},
       {field: 'sumTOTAL',headerName:'sumTOTAL'},
@@ -61,14 +74,14 @@ export function CarsGrid() {
     }, []);
     
   
-
+//console.log(rowData)
     
     return (
-       <div className="ag-theme-alpine" style={{height: 800, width: '95%'}}> 
+       <div className="ag-theme-alpine" style={{height: height, width: '100%'}}> 
            <AgGridReact
                 defaultColDef={{sortable: true, filter: true }}
                 pagination={true}
-                paginationPageSize={100}
+                paginationPageSize={50}
                 rowData={rowData}
                 columnDefs={colDefs}
                 >
@@ -77,3 +90,5 @@ export function CarsGrid() {
       
       )
 };
+
+

@@ -1,5 +1,6 @@
 import React, { useRef,useState, useLayoutEffect,useEffect ,useContext} from 'react';
-//import './App.css';
+import type { FC } from 'react';
+
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
@@ -13,16 +14,24 @@ type Props = {
   children?: string;
 };
  
+type PropsWithChild = {
+  comp1: String;
+  comp2: String;
+  height: Number;
 
-function Comp1vis(props: any) {
-  const [applicant1,setAppl] = useState("キヤノン株式会社")
-  const [applicant2,setAppl2] = useState("株式会社リコー")
+};
+
+
+//export const Comp1vis: FC = ({comp1="キヤノン株式会社",comp2="株式会社リコー",height=1000}:PropsWithChild)=>{  
+function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー",height=1000}:PropsWithChild) {
+  const [applicant1,setAppl] = useState(comp1)
+  const [applicant2,setAppl2] = useState(comp2)
   const [count, setCount] = useState(0)
   const [options,setOptions] = useState([
    
   ])
   
-  React.useEffect(() => {
+  useEffect(() => {
     let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/";
     fetch(url_appl)
     .then(result => result.json())
@@ -142,7 +151,7 @@ function Comp1vis(props: any) {
             let label = rangeDataItem.get("label");
             label.setAll({
               text: "",//.toUpperCase(),
-              fontSize: "1.1em",
+              fontSize: "0.9em",
               fill: series.get("stroke"),
               paddingTop: 0,
               isMeasured: false,
@@ -206,7 +215,7 @@ function Comp1vis(props: any) {
     
     <Container maxWidth="lg">
       <Grid>
-        <div id="chartdiv3" style={{ width: "100%", height: "1000px" }}></div>
+        <div id="chartdiv3" style={{ width: "100%", height: height }}></div>
       </Grid>
     </Container>
 
@@ -214,5 +223,4 @@ function Comp1vis(props: any) {
       );
   }
 
-
-  export default Comp1vis;
+export default Comp1vis

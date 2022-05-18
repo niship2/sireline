@@ -7,6 +7,8 @@ import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
 import { Chart } from '../../chart';
 import Link from 'next/link'
 
+import {CarsGrid} from '../../../components/dashboard/customer/aggrid'
+
 export const OverviewTSRank: FC = (props) => {
   const theme = useTheme();
 
@@ -58,13 +60,6 @@ export const OverviewTSRank: FC = (props) => {
           }
         }}
       >
-        <Chart
-          height={100}
-          options={chartOptions}
-          series={chartSeries}
-          type="radialBar"
-          width={100}
-        />
         <Box
           sx={{
             display: 'flex',
@@ -92,6 +87,7 @@ export const OverviewTSRank: FC = (props) => {
             >
               TS値ランキング
             </Typography>
+            <CarsGrid height={400} />
             <Typography
               color="textSecondary"
               sx={{ mt: 1 }}
@@ -100,15 +96,6 @@ export const OverviewTSRank: FC = (props) => {
               先月に続きTS値首位を維持したのは・・・
             </Typography>
           </Box>
-          <Avatar
-            sx={{
-              backgroundColor: alpha(theme.palette.success.main, 0.08),
-              color: 'success.main'
-            }}
-            variant="rounded"
-          >
-            <ChevronUpIcon fontSize="small" />
-          </Avatar>
         </Box>
       </Box>
       <Divider />

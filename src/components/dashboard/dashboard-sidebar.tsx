@@ -86,7 +86,7 @@ const getSections = (t: TFunction): Section[] => [
           },
           {
             title: t('類似企業分析'),
-            path: '/dashboard/products/new'
+            path: '/dashboard/products/portfolio-year'
           }
         ]
       },

@@ -54,8 +54,6 @@ function a11yProps(index: number) {
 }
 
 
-
-
 const CustomerList: NextPage = () => {
 
   const [value, setValue] = useState(0);
@@ -90,10 +88,10 @@ const CustomerList: NextPage = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CarsGrid />
+        <CarsGrid field={"total"}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CarsGrid />
+        <CarsGrid field={"gyokai"} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <CarsGrid />

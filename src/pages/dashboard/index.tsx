@@ -118,13 +118,6 @@ const Overview: NextPage = () => {
               <OverviewCompreport />
             </Grid>
             <Grid
-            item
-            md={6}
-            xs ={12}
-            >
-              <OverviewRisk />
-            </Grid>            
-            <Grid
               item
               md={12}
               xs={12}
@@ -132,6 +125,15 @@ const Overview: NextPage = () => {
 
               <OverviewTotalTransactions />
             </Grid>
+
+            <Grid
+            item
+            md={6}
+            xs ={12}
+            >
+              <OverviewRisk />
+            </Grid>            
+
 
 
             <Grid

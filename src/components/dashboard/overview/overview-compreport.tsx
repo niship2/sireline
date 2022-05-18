@@ -6,6 +6,13 @@ import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
 import { Chart } from '../../chart';
 
+
+import dynamic from 'next/dynamic'
+export const Comp1vis = dynamic(
+  () => import('../../amcharts/amctest'),
+  { ssr: false }
+)
+
 export const OverviewCompreport: FC = (props) => {
   const theme = useTheme();
 
@@ -40,7 +47,10 @@ export const OverviewCompreport: FC = (props) => {
     }
   };
 
-  const chartSeries = [76];
+
+  const com1 = "トヨタ自動車株式会社";
+  const com2 = "本田技研工業株式会社";
+
 
   return (
     <Card {...props}>
@@ -57,13 +67,6 @@ export const OverviewCompreport: FC = (props) => {
           }
         }}
       >
-        <Chart
-          height={100}
-          options={chartOptions}
-          series={chartSeries}
-          type="radialBar"
-          width={100}
-        />
         <Box
           sx={{
             display: 'flex',
@@ -89,25 +92,18 @@ export const OverviewCompreport: FC = (props) => {
               color="secondary"
               variant="h4"
             >
-              注目M&Aのレポート
+              注目2社の比較
             </Typography>
+            <Comp1vis comp1={com1} comp2={com2} height={400} />
             <Typography
               color="textSecondary"
               sx={{ mt: 1 }}
               variant="body2"
             >
-              今月の注目案件はA社とB社の・・・
+              注目企業の {com1} と  {com2} を比較しました・・・
             </Typography>
           </Box>
-          <Avatar
-            sx={{
-              backgroundColor: alpha(theme.palette.error.main, 0.08),
-              color: 'error.main'
-            }}
-            variant="rounded"
-          >
-            <ChevronDownIcon fontSize="small" />
-          </Avatar>
+
         </Box>
       </Box>
       <Divider />

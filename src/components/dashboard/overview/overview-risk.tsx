@@ -58,13 +58,6 @@ export const OverviewRisk: FC = (props) => {
           }
         }}
       >
-        <Chart
-          height={100}
-          options={chartOptions}
-          series={chartSeries}
-          type="radialBar"
-          width={100}
-        />
         <Box
           sx={{
             display: 'flex',
@@ -100,15 +93,6 @@ export const OverviewRisk: FC = (props) => {
               知財力と与信力が共に高い企業は・・・
             </Typography>
           </Box>
-          <Avatar
-            sx={{
-              backgroundColor: alpha(theme.palette.success.main, 0.08),
-              color: 'success.main'
-            }}
-            variant="rounded"
-          >
-            <ChevronUpIcon fontSize="small" />
-          </Avatar>
         </Box>
       </Box>
       <Divider />
