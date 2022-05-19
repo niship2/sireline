@@ -6,6 +6,8 @@ import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
 import { Chart } from '../../chart';
 import Link from 'next/link'
+import {NetworkComp} from "../../dashboard/customer/networkcomp"
+
 
 export const OverviewRisk: FC = (props) => {
   const theme = useTheme();
@@ -85,6 +87,9 @@ export const OverviewRisk: FC = (props) => {
             >
               知財力＊与信力分析
             </Typography>
+            
+            
+
             <Typography
               color="textSecondary"
               sx={{ mt: 1 }}

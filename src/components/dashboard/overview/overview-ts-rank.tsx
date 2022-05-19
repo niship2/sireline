@@ -87,7 +87,7 @@ export const OverviewTSRank: FC = (props) => {
             >
               TS値ランキング
             </Typography>
-            <CarsGrid height={400} />
+            <CarsGrid height={440} />
             <Typography
               color="textSecondary"
               sx={{ mt: 1 }}

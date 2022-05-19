@@ -23,17 +23,17 @@ function NumFormatter(params: ValueFormatterParams) {
 }
 
 type PropsWithChild = {
-  field: String;
-  height: Number;
+  field: string;
+  height: number;
 };
 
 //const ExWithChildFC: React.FC<PropsOptional> = ({ x = 10, y, children }) => {
-//export function CarsGrid() {
-export const CarsGrid: FC = ({field='all',height=800}:PropsWithChild)=>{  
+export function CarsGrid({field='all',height=800}:PropsWithChild) {
+//export const CarsGrid: FC = ({field='all',height=800}:PropsWithChild)=>{  
     
     const [rowData, setRowData] = useState();
     const [colDefs, setColDefs] = useState([
-        {field: 'H_APPLICANT',headerName:'出願人',filter: 'agSetColumnFilter',pinned: "left"},
+        {field: 'H_APPLICANT',headerName:'出願人',filter: 'agSetColumnFilter',pinned: "left",excelMode: 'windows',},
         {field: 'appcount2',headerName:'出願件数' 
         ,valueFormatter: NumFormatter
         ,cellRenderer: 'agSparklineCellRenderer',
@@ -66,11 +66,13 @@ export const CarsGrid: FC = ({field='all',height=800}:PropsWithChild)=>{
 
     React.useEffect(() => {
         //fetch('https://www.ag-grid.com/example-assets/row-data.json')
-        fetch('https://get-totalrank-byrunjg3yq-uc.a.run.app/')
-        .then(result => result.json())
-            .then(rowData => setRowData(rowData)
-            
-            )
+        const fetchPost = async () => {
+          await fetch('https://get-totalrank-byrunjg3yq-uc.a.run.app/')
+        .   then(result => result.json())
+              .then(rowData => setRowData(rowData)
+              ).then(()=>setColDefs(colDefs))
+        }
+        fetchPost();
     }, []);
     
   

@@ -15,9 +15,9 @@ type Props = {
 };
  
 type PropsWithChild = {
-  comp1: String;
-  comp2: String;
-  height: Number;
+  comp1: string;
+  comp2: string;
+  height: number;
 
 };
 
@@ -188,6 +188,7 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
     },   
     //[]);
     );
+    
     return (
       <div>
         <Container maxWidth="lg">

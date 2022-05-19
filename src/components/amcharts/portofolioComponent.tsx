@@ -6,14 +6,9 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import Select from 'react-select'
 import { Box, Button, Container, Divider, Grid, Typography } from '@mui/material';
 
-
-type Props = {
-  children?: string;
-};
-
 type PropsWithChild = {
     appl1: String;
-    height: Number;
+    height: number;
   };
 
 

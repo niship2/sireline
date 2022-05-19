@@ -119,7 +119,7 @@ const Overview: NextPage = () => {
             </Grid>
             <Grid
               item
-              md={12}
+              md={6}
               xs={12}
             >
 
