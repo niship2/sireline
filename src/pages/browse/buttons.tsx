@@ -5,9 +5,9 @@ import { Box, Container } from '@mui/material';
 import { BrowseLayout } from '../../components/browse-layout';
 import { MainLayout } from '../../components/main-layout';
 import { WidgetPreviewer } from '../../components/widget-previewer';
-import { Buttons1 } from '../../components/widgets/buttons/buttons-1';
-import { Buttons2 } from '../../components/widgets/buttons/buttons-2';
-import { Buttons3 } from '../../components/widgets/buttons/buttons-3';
+//import { Buttons1 } from '../../components/widgets/buttons/buttons-1';
+//import { Buttons2 } from '../../components/widgets/buttons/buttons-2';
+//import { Buttons3 } from '../../components/widgets/buttons/buttons-3';
 import { gtm } from '../../lib/gtm';
 
 const BrowseButtons: NextPage = () => {
@@ -32,15 +32,15 @@ const BrowseButtons: NextPage = () => {
       >
         <Container maxWidth="lg">
           <WidgetPreviewer
-            element={<Buttons1 />}
+            //element={<Buttons1 />}
             name="Simple buttons"
           />
           <WidgetPreviewer
-            element={<Buttons2 />}
+            //element={<Buttons2 />}
             name="Buttons with text and icon"
           />
           <WidgetPreviewer
-            element={<Buttons3 />}
+            //element={<Buttons3 />}
             name="Button groups"
           />
         </Container>
