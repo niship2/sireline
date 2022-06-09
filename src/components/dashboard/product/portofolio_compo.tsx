@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 //import {PortofolioChart } from '../../amcharts/portofolioComponent'
 
 export const PortofolioChart = dynamic(
-    () => import('../../amcharts/portofolioComponent'),
+    () => import('../../amcharts/scatter'),
     { ssr: false }
   )
 

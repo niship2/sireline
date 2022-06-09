@@ -17,7 +17,7 @@ import { styled } from '@mui/material/styles';
 import { orderApi } from '../../../__fake-api__/order-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { OrderDrawer } from '../../../components/dashboard/order/order-drawer';
+//import { OrderDrawer } from '../../../components/dashboard/order/order-drawer';
 import { OrderListTable } from '../../../components/dashboard/order/order-list-table';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Plus as PlusIcon } from '../../../icons/plus';

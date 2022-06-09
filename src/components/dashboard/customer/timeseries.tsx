@@ -48,7 +48,7 @@ export function TimeSeries(){
   
     const chartdata = {
       series: [
-        { name:"出願件数",data: xvalary},
+        { name:"公開件数",data: xvalary},
         { name:"TS値合計",data: yvalary }
       ],
       categories: catvalary

@@ -7,13 +7,13 @@ import Select from 'react-select'
 import { Box, Button, Container, Divider, Grid, Typography } from '@mui/material';
 
 type PropsWithChild = {
-    appl1: String;
+    appl1: string;
     height: number;
   };
 
 
 //const PortofolioChart: FC = ({appl1='キヤノン株式会社',height=800}:PropsWithChild)=>{
-function PortofolioChart({appl1='キヤノン株式会社',height=600}:PropsWithChild) {
+function PortofolioChart2({appl1='キヤノン株式会社',height=600}:PropsWithChild) {
   const [applicant1,setAppl] = useState(appl1)
   const [options,setOptions] = useState([
     { value: '凸版印刷', label: '凸版印刷' },
@@ -379,4 +379,4 @@ function PortofolioChart({appl1='キヤノン株式会社',height=600}:PropsWith
   );
 }
 
-export default PortofolioChart
+export default PortofolioChart2

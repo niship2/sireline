@@ -100,7 +100,7 @@ export const OverviewTSRank: FC = (props) => {
       </Box>
       <Divider />
       <CardActions>
-        <Link href="/dashboard/customers" passHref>
+        <Link href="dashboard/customers/ts_att" passHref>
           <Button endIcon={<ArrowRightIcon fontSize="small" />}>
           詳細はこちら
           </Button>

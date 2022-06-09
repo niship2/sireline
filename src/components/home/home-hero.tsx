@@ -35,7 +35,8 @@ export const HomeHero: FC = (props) => {
             }
           }}
         >
-                    <NextLink
+       
+        <NextLink
             href="/dashboard"
             passHref
           >
@@ -44,57 +45,39 @@ export const HomeHero: FC = (props) => {
               size="large"
               variant="contained"
             >
-              普通のダッシュボード
-            </Button>
-          </NextLink>          
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              size="large"
-              variant="contained"
-            >
-              VC向けダッシュボード
-            </Button>
-          </NextLink>
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              size="large"
-              variant="contained"
-            >
-              大学発ベンチャー向けダッシュボード
-            </Button>
-          </NextLink>    
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              size="large"
-              variant="contained"
-            >
-              M&A先の探索
-            </Button>
-          </NextLink>        
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              size="large"
-              variant="contained"
-            >
-              相手を知財から調べたい
+              知財経営企画・分析landscape
             </Button>
           </NextLink>  
+
+  
+    
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+             オープンイノベーション探索
+            </Button>
+          </NextLink> 
+
+               
+          <NextLink
+            href="/dashboard"
+            passHref
+          >
+            <Button
+              component="a"
+              size="large"
+              variant="contained"
+            >
+              価値評価
+            </Button>
+          </NextLink>  
+       
           <NextLink
             href="/dashboard"
             passHref
@@ -106,19 +89,8 @@ export const HomeHero: FC = (props) => {
             >
               技術シーズからの探索
             </Button>
-          </NextLink> 
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              size="large"
-              variant="contained"
-            >
-              攻めと守りの観点
-            </Button>
-          </NextLink>                                    
+          </NextLink>   
+                               
         </Box>
       </Container>
     </Box>

@@ -9,6 +9,15 @@ import { resolve } from 'path/posix';
 import { appl1,appl2 } from '../selectbox'
 import Select from 'react-select'
 import { number } from 'prop-types';
+import styled from 'styled-components';
+import { SetValueModel } from 'ag-grid-enterprise/dist/lib/setFilter/setValueModel';
+// Styling a regular HTML input
+const StyledInput = styled.input`
+  display: block;
+  margin: 20px 0px;
+  border: 1px solid lightblue;
+`;
+
 
 type Props = {
   children?: string;
@@ -22,35 +31,70 @@ type PropsWithChild = {
 };
 
 
+
 //export const Comp1vis: FC = ({comp1="キヤノン株式会社",comp2="株式会社リコー",height=1000}:PropsWithChild)=>{  
 function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー",height=1000}:PropsWithChild) {
   const [applicant1,setAppl] = useState(comp1)
   const [applicant2,setAppl2] = useState(comp2)
-  const [count, setCount] = useState(0)
-  const [options,setOptions] = useState([
-   
-  ])
+  const [options,setOptions] = useState([{"value":"キヤノン株式会社","label":"キヤノン株式会社"}])
+  const [options2,setOptions2] = useState([{"value":"株式会社リコー","label":"株式会社リコー"}])
+  //const [value, setValue] = useState("");
   
-  useEffect(() => {
-    let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/";
-    fetch(url_appl)
-    .then(result => result.json())
-        .then(rowData => setOptions(rowData))
-  }, []);
-
-  
-  const applchange:any= (e: { value: React.SetStateAction<string>; }) => {
-    setAppl(e.value);
-    //console.log(e.value);
+  //{ value: React.SetStateAction<string>; }
+  const applchange:any= (e) => {
+    const applnames = e.map((obj) => obj.value).join("$|^")
+    //console.log(applnames)
+    setAppl("^" + applnames +"$")
+    //setAppl(e.value)
   }
   const applchange2:any = (e: { value: React.SetStateAction<string>; }) => {
-    setAppl2(e.value);
-    //console.log(e.value);
+    const applnames = e.map((obj) => obj.value).join("$|^")
+    //console.log(applnames)
+    setAppl2("^" + applnames +"$")
+    
   }
 
+  //function aggapplname(appndata){
+  //  return {"value":appdata.value}
+  //}
+
+
+  function getoptions(rowData) {
+    return {"value":rowData.H_APPLICANT,"label":rowData.H_APPLICANT};
+  }
+
+  
+
+  function  applChange(e) {
+    
+      let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
+           
+      fetch(url_appl)
+      .then(result => result.json())
+          .then(rowData =>{
+            let fuga2 = rowData.map(getoptions)                  
+            setOptions(fuga2)
+            setAppl(fuga2[0].value)            
+          }
+          )
+  }
+
+  function applChange2(e) {
+    let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
+     
+    fetch(url_appl)
+    .then(result => result.json())
+        .then(rowData =>{
+          let fuga2 = rowData.map(getoptions)                  
+          setOptions2(fuga2)
+          setAppl2(fuga2[0].value)            
+        }
+        )
+}
+
+
   //console.log(applicant1)
-  useLayoutEffect(() => {
-        
+  useLayoutEffect(() => {     
         let root = am5.Root.new("chartdiv3");
         root.setThemes([
           am5themes_Animated.new(root)
@@ -75,6 +119,7 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
         // Handle loaded data
         am5.net.load(url).then((result)=> {
           const data = am5.JSONParser.parse(result.response);
+          //console.log(data);
           chart.getNumberFormatter().set("numberFormat", "#.#s");
           let legend = chart.children.push(
             am5.Legend.new(root, {
@@ -85,7 +130,7 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
 
           let yAxis = chart.yAxes.push(
             am5xy.CategoryAxis.new(root, {
-              categoryField: "wipo_clas",
+              categoryField: "FTdef",
               renderer: am5xy.AxisRendererY.new(root, {
                 inversed: true,
                 cellStartLocation: 0.1,
@@ -107,7 +152,7 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
                 xAxis: xAxis,
                 yAxis: yAxis,
                 valueXField: field,
-                categoryYField: "wipo_clas",
+                categoryYField: "FTdef",
                 sequencedInterpolation: true,
                 clustered: false,
                 tooltip: am5.Tooltip.new(root, {
@@ -164,8 +209,8 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
             return series;
           }
 
-          createSeries("A_appcount", am5.p100, "right", -50);
-          createSeries("B_appcount", 0, "left", 40);
+          createSeries("A_sum_total_val", am5.p100, "right", -50);
+          createSeries("B_sum_total_val", 0, "left", 40);
 
 
           chart.set("cursor", am5xy.XYCursor.new(root, {}));
@@ -194,21 +239,48 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
         <Container maxWidth="lg">
         <Grid container spacing={1}>
       <Grid item xs={5}>
-      <Select options={options}
-        value={options.find(obj => obj.value === applicant1)}
+      <StyledInput
+      placeholder="企業1検索"
+      onKeyPress={(e) =>{
+          if(e.key == 'Enter') {
+            
+            e.preventDefault()
+            applChange(e)
+            
+          }
+        }
+        }
+      />
+      
+      <Select options={options}        
+        value = {options.find(obj => obj.value === applicant1)}
         onChange = {applchange}
         isSearchable
+        isMulti
         />
       </Grid>
       <Grid item xs={1}>
         vs.
       </Grid>
       <Grid item xs={5}>
-      <Select options={options}
-        value={options.find(obj => obj.value === applicant2)}
+      <StyledInput
+      placeholder="企業2検索"
+      onKeyPress={(e) =>{
+        if(e.key == 'Enter') {
+          e.preventDefault()
+          
+          applChange2(e)
+          
+        }
+      }
+      }  
+      />
+      <Select options={options2}
+        value={options2.find(obj => obj.value === applicant2)}
         onChange={applchange2}
+        isSearchable
+        isMulti
         />
-
       </Grid>
     </Grid>
     </Container>
@@ -222,6 +294,6 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
 
       </div>
       );
-  }
+  []}
 
 export default Comp1vis
