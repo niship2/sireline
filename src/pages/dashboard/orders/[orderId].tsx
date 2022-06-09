@@ -8,9 +8,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { orderApi } from '../../../__fake-api__/order-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { OrderItems } from '../../../components/dashboard/order/order-items';
-import { OrderLogs } from '../../../components/dashboard/order/order-logs';
-import { OrderSummary } from '../../../components/dashboard/order/order-summary';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Calendar as CalendarIcon } from '../../../icons/calendar';
 import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
@@ -147,13 +144,7 @@ const OrderDetails: NextPage = () => {
               </Grid>
             </Grid>
           </Box>
-          <OrderSummary order={order} />
-          <Box sx={{ mt: 4 }}>
-            <OrderItems orderItems={order.items || []} />
-          </Box>
-          <Box sx={{ mt: 4 }}>
-            <OrderLogs order={order} />
-          </Box>
+         
         </Container>
       </Box>
     </>

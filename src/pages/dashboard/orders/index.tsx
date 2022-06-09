@@ -17,8 +17,6 @@ import { styled } from '@mui/material/styles';
 import { orderApi } from '../../../__fake-api__/order-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-//import { OrderDrawer } from '../../../components/dashboard/order/order-drawer';
-import { OrderListTable } from '../../../components/dashboard/order/order-list-table';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
@@ -236,129 +234,6 @@ const OrderList: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Dashboard: Order List | Material Kit Pro
-        </title>
-      </Head>
-      <Box
-        component="main"
-        ref={rootRef}
-        sx={{
-          backgroundColor: 'background.paper',
-          display: 'flex',
-          flexGrow: 1,
-          overflow: 'hidden'
-        }}
-      >
-        <OrderListInner open={drawer.isOpen}>
-          <Box sx={{ px: 3 }}>
-            <Grid
-              container
-              justifyContent="space-between"
-              spacing={3}
-            >
-              <Grid item>
-                <Typography variant="h4">
-                  Orders
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Button
-                  startIcon={<PlusIcon fontSize="small" />}
-                  variant="contained"
-                >
-                  Add
-                </Button>
-              </Grid>
-            </Grid>
-            <Tabs
-              indicatorColor="primary"
-              onChange={handleTabsChange}
-              scrollButtons="auto"
-              textColor="primary"
-              value={currentTab}
-              sx={{ mt: 3 }}
-              variant="scrollable"
-            >
-              {tabs.map((tab) => (
-                <Tab
-                  key={tab.value}
-                  label={tab.label}
-                  value={tab.value}
-                />
-              ))}
-            </Tabs>
-          </Box>
-          <Divider />
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              flexWrap: 'wrap',
-              m: -1.5,
-              p: 3
-            }}
-          >
-            <Box
-              component="form"
-              onSubmit={handleQueryChange}
-              sx={{
-                flexGrow: 1,
-                m: 1.5
-              }}
-            >
-              <TextField
-                defaultValue=""
-                fullWidth
-                inputProps={{ ref: queryRef }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon fontSize="small" />
-                    </InputAdornment>
-                  )
-                }}
-                placeholder="Search by order number"
-              />
-            </Box>
-            <TextField
-              label="Sort By"
-              name="order"
-              onChange={handleSortChange}
-              select
-              SelectProps={{ native: true }}
-              sx={{ m: 1.5 }}
-              value={sort}
-            >
-              {sortOptions.map((option) => (
-                <option
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.label}
-                </option>
-              ))}
-            </TextField>
-          </Box>
-          <Divider />
-          <OrderListTable
-            onOpenDrawer={handleOpenDrawer}
-            onPageChange={handlePageChange}
-            onRowsPerPageChange={handleRowsPerPageChange}
-            orders={paginatedOrders}
-            ordersCount={filteredOrders.length}
-            page={page}
-            rowsPerPage={rowsPerPage}
-          />
-        </OrderListInner>
-        <OrderDrawer
-          containerRef={rootRef}
-          onClose={handleCloseDrawer}
-          open={drawer.isOpen}
-          order={orders.find((order) => order.id === drawer.orderId)}
-        />
-      </Box>
     </>
   );
 };
