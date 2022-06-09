@@ -91,13 +91,48 @@ const getSections = (t: TFunction): Section[] => [
         ]
       },
       {
-        title: t('知財リスク分析'),
-        icon: <ShoppingCartIcon fontSize="small" />,
-        path: '/dashboard/orders',
+        title: t('ニーズ分析システム'),
+        path: '/dashboard/',
+        icon: <ReceiptTaxIcon fontSize="small" />,
         children: [
           {
+            title: t('技術ニーズ探索'),
+            path: '/dashboard/'
+          },
+          {
+            title: t('マッチング分析'),
+            path: '/dashboard/'
+          }
+        ]
+      },
+      {
+        title: t('総合分析 '),
+        path: '/dashboard/',
+        icon: <ReceiptTaxIcon fontSize="small" />,
+        children: [
+          {
+            title: t('時系列データ'),
+            path: '/dashboard/'
+          },
+          {
+            title: t('注目度'),
+            path: '/dashboard/'
+          },
+          {
+            title: t('テクノロジーサイズ'),
+            path: '/dashboard/'
+          },
+          {
+            title: t('重要特許シェア率'),
+            path: '/dashboard/'
+          },          
+          {
+            title: t('両利きの経営度'),
+            path: '/dashboard/'
+          },
+          {
             title: t('知財力＊与信力'),
-            path: '/dashboard/orders'
+            path: '/dashboard/'
           },
           {
             title: t('知財リスク評価'),
@@ -111,49 +146,6 @@ const getSections = (t: TFunction): Section[] => [
             title: t('知財保険情報'),
             path: '/dashboard/'
           }
-
-        ]
-      },
-      {
-        title: t('ニーズ分析システム'),
-        path: '/dashboard/invoices',
-        icon: <ReceiptTaxIcon fontSize="small" />,
-        children: [
-          {
-            title: t('技術ニーズ探索'),
-            path: '/dashboard/invoices'
-          },
-          {
-            title: t('マッチング分析'),
-            path: '/dashboard/invoices/1'
-          }
-        ]
-      },
-      {
-        title: t('総合分析 '),
-        path: '/dashboard/invoices',
-        icon: <ReceiptTaxIcon fontSize="small" />,
-        children: [
-          {
-            title: t('時系列データ'),
-            path: '/dashboard/invoices'
-          },
-          {
-            title: t('注目度'),
-            path: '/dashboard/invoices/1'
-          },
-          {
-            title: t('テクノロジーサイズ'),
-            path: '/dashboard/invoices/1'
-          },
-          {
-            title: t('重要特許シェア率'),
-            path: '/dashboard/invoices/1'
-          },          
-          {
-            title: t('両利きの経営度'),
-            path: '/dashboard/invoices/1'
-          },
         ]
       }
     ]
