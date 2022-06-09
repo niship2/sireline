@@ -151,7 +151,7 @@ const GridExample = () => {
   );
 };
 
-GridExample.getLayout = (page) => (
+GridExample.getLayout = (page:any) => (
     <AuthGuard>
       <DashboardLayout>
         {page}
