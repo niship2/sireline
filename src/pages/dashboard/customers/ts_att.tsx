@@ -88,16 +88,16 @@ const CustomerList: NextPage = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CarsGrid field={"total"}/>
+      <CarsGrid filterkey={"headipc"} fields={'土木技術'} height={440} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CarsGrid field={"gyokai"} />
+        
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <CarsGrid />
+        
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <CarsGrid />
+        
       </TabPanel>      
     </Box>
         </Container>
