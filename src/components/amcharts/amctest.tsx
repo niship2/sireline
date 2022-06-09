@@ -41,14 +41,14 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
   //const [value, setValue] = useState("");
   
   //{ value: React.SetStateAction<string>; }
-  const applchange:any= (e) => {
-    const applnames = e.map((obj) => obj.value).join("$|^")
+  const applchange:any= (e:any) => {
+    const applnames = e.map((obj:any) => obj.value).join("$|^")
     //console.log(applnames)
     setAppl("^" + applnames +"$")
     //setAppl(e.value)
   }
-  const applchange2:any = (e: { value: React.SetStateAction<string>; }) => {
-    const applnames = e.map((obj) => obj.value).join("$|^")
+  const applchange2:any = (e:any) => {
+    const applnames = e.map((obj:any) => obj.value).join("$|^")
     //console.log(applnames)
     setAppl2("^" + applnames +"$")
     
@@ -59,13 +59,13 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
   //}
 
 
-  function getoptions(rowData) {
+  function getoptions(rowData:any) {
     return {"value":rowData.H_APPLICANT,"label":rowData.H_APPLICANT};
   }
 
   
 
-  function  applChange(e) {
+  function  applChange(e:any) {
     
       let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
            
@@ -79,7 +79,7 @@ function Comp1vis({comp1="キヤノン株式会社",comp2="株式会社リコー
           )
   }
 
-  function applChange2(e) {
+  function applChange2(e:any) {
     let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
      
     fetch(url_appl)

@@ -29,14 +29,14 @@ function PortofolioChart({comp1='キヤノン株式会社',comp2='株式会社�
   const [options,setOptions] = useState([{"value":"キヤノン株式会社","label":"キヤノン株式会社"}])
   const [options2,setOptions2] = useState([{"value":"株式会社リコー","label":"株式会社リコー"}])  
 
-  //{ value: React.SetStateAction<string>; }
   const applchange:any= (e:any) => {
     const applnames = e.map((obj:any) => obj.value).join("$|^")
     //console.log(applnames)
     setAppl("^" + applnames +"$")
     //setAppl(e.value)
   }
-  const applchange2:any = (e: { value: React.SetStateAction<string>; }) => {
+
+  const applchange2:any = (e:any) => {
     const applnames = e.map((obj:any) => obj.value).join("$|^")
     //console.log(applnames)
     setAppl2("^" + applnames +"$")
@@ -48,7 +48,7 @@ function PortofolioChart({comp1='キヤノン株式会社',comp2='株式会社�
   }
 
 
-  function  applChange(e) {
+  function  applChange(e:any) {
     
     let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
          
@@ -62,7 +62,7 @@ function PortofolioChart({comp1='キヤノン株式会社',comp2='株式会社�
         )
 }
 
-function applChange2(e) {
+function applChange2(e:any) {
   let url_appl = "https://get-applicantsname-byrunjg3yq-uc.a.run.app/?appname=" + e.target.value;
    
   fetch(url_appl)
@@ -151,7 +151,7 @@ function applChange2(e) {
 
         // Add bullet
         // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
-        let circleTemplate = am5.Template.new({});
+        let circleTemplate:am5.Template<am5.Circle> = am5.Template.new({});
         series0.bullets.push(function() {
             let graphics = am5.Circle.new(root, {
             fill: series0.get("fill"),
@@ -190,7 +190,7 @@ function applChange2(e) {
   
         // Add bullet
         // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
-        let starTemplate = am5.Template.new({});
+        let starTemplate:am5.Template<am5.Star> = am5.Template.new({});
         series1.bullets.push(function() {
             let graphics = am5.Star.new(root, {
             fill: series1.get("fill"),
