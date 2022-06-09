@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { Box} from '@mui/material';
 import type { Product } from '../../../types/product';
 import dynamic from 'next/dynamic'
-//import {PortofolioChart } from '../../amcharts/portofolioComponent'
 
 export const NetworkChart = dynamic(
     () => import('../../amcharts/network'),

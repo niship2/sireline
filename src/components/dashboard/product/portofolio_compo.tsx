@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { Box} from '@mui/material';
 import type { Product } from '../../../types/product';
 import dynamic from 'next/dynamic'
-//import {PortofolioChart } from '../../amcharts/portofolioComponent'
 
 export const PortofolioChart = dynamic(
     () => import('../../amcharts/scatter'),
@@ -17,7 +16,7 @@ export const Portfoliotable: FC = (props) => {
   return (
     <div>
         <Box>
-          <PortofolioChart appl1={"キヤノン株式会社"} height={600} />
+          <PortofolioChart comp1={"キヤノン株式会社"} comp2={"株式会社リコー"} ipc_level={"FTdef"} height={600} />
         </Box>
       
     </div>
