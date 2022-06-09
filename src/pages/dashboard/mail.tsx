@@ -7,10 +7,6 @@ import type { Theme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { MailComposer } from '../../components/dashboard/mail/mail-composer';
-import { MailDetails } from '../../components/dashboard/mail/mail-details';
-import { MailList } from '../../components/dashboard/mail/mail-list';
-import { MailSidebar } from '../../components/dashboard/mail/mail-sidebar';
 import { gtm } from '../../lib/gtm';
 import {
   closeComposer,
@@ -108,63 +104,7 @@ const Mail: NextPage = () => {
   };
 
   return (
-    <>
-      <Head>
-        <title>
-          Dashboard: Mail | Material Kit Pro
-        </title>
-      </Head>
-      <Box
-        component="main"
-        sx={{
-          position: 'relative',
-          height: '100%',
-          width: '100%',
-          overflow: 'hidden'
-        }}
-      >
-        <Box
-          ref={rootRef}
-          sx={{
-            display: 'flex',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0
-          }}
-        >
-          <MailSidebar
-            containerRef={rootRef}
-            label={label}
-            labels={labels}
-            onClose={handleCloseSidebar}
-            onCompose={handleComposeClick}
-            open={isSidebarOpen}
-          />
-          <MailInner open={isSidebarOpen}>
-            {
-              emailId
-                ? (
-                  <MailDetails
-                    label={label}
-                    emailId={emailId}
-                  />
-                )
-                : (
-                  <MailList
-                    onToggleSidebar={handleToggleSidebar}
-                    label={label}
-                  />
-                )
-            }
-          </MailInner>
-        </Box>
-      </Box>
-      <MailComposer
-        open={isComposeOpen}
-        onClose={handleComposerClose}
-      />
+    <>          
     </>
   );
 };

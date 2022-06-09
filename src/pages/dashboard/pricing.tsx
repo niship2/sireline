@@ -5,7 +5,6 @@ import { Badge, Box, Container, Divider, Grid, Switch, Typography } from '@mui/m
 import { useTheme } from '@mui/material/styles';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { PricingPlan } from '../../components/pricing/pricing-plan';
 import { gtm } from '../../lib/gtm';
 
 const Pricing: NextPage = () => {
@@ -109,92 +108,7 @@ const Pricing: NextPage = () => {
           </Container>
         </Box>
         <Divider />
-        <Container
-          maxWidth="lg"
-          sx={{ py: 6 }}
-        >
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <PricingPlan
-                cta="Start Free Trial"
-                currency="$"
-                description="To familiarize yourself with our tools."
-                features={[
-                  'Create contracts',
-                  'Chat support',
-                  'Email alerts'
-                ]}
-                image="/static/pricing/plan1.svg"
-                name="Startup"
-                price="0"
-                sx={{
-                  height: '100%',
-                  maxWidth: 460,
-                  mx: 'auto'
-                }}
-              />
-            </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <PricingPlan
-                cta="Start Free Trial"
-                currency="$"
-                description="To familiarize yourself with our tools."
-                features={[
-                  'All previous',
-                  'Highlights reporting',
-                  'Data history',
-                  'Unlimited users'
-                ]}
-                image="/static/pricing/plan2.svg"
-                name="Standard"
-                popular
-                price="4.99"
-                sx={{
-                  height: '100%',
-                  maxWidth: 460,
-                  mx: 'auto'
-                }}
-              />
-            </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <PricingPlan
-                cta="Contact Us"
-                currency="$"
-                description="To familiarize yourself with our tools."
-                features={[
-                  'All previous',
-                  'Unlimited contacts',
-                  'Analytics platform',
-                  'Public API access',
-                  'Send and sign unlimited contracts'
-                ]}
-                image="/static/pricing/plan3.svg"
-                name="Business"
-                price="29.99"
-                sx={{
-                  height: '100%',
-                  maxWidth: 460,
-                  mx: 'auto'
-                }}
-              />
-            </Grid>
-          </Grid>
-        </Container>
+        
         <Typography
           align="center"
           color="textSecondary"

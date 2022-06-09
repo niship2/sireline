@@ -7,8 +7,8 @@ import toast from 'react-hot-toast';
 import { Box, Typography } from '@mui/material';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { KanbanColumn } from '../../components/dashboard/kanban/kanban-column';
-import { KanbanColumnAdd } from '../../components/dashboard/kanban/kanban-column-add';
+//import { KanbanColumn } from '../../components/dashboard/kanban/kanban-column';
+//import { KanbanColumnAdd } from '../../components/dashboard/kanban/kanban-column-add';
 import { gtm } from '../../lib/gtm';
 import { getBoard, moveCard } from '../../slices/kanban';
 import { useDispatch, useSelector } from '../../store';
@@ -92,21 +92,6 @@ const Kanban: NextPage = () => {
               overflowY: 'hidden'
             }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                px: 1,
-                py: 3
-              }}
-            >
-              {columns.allIds.map((columnId: string) => (
-                <KanbanColumn
-                  columnId={columnId}
-                  key={columnId}
-                />
-              ))}
-              <KanbanColumnAdd />
-            </Box>
           </Box>
         </DragDropContext>
       </Box>

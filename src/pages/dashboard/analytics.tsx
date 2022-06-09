@@ -12,11 +12,6 @@ import {
 } from '@mui/material';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { AnalyticsGeneralOverview } from '../../components/dashboard/analytics/analytics-general-overview';
-import { AnalyticsMostVisited } from '../../components/dashboard/analytics/analytics-most-visited';
-import { AnalyticsSocialSources } from '../../components/dashboard/analytics/analytics-social-sources';
-import { AnalyticsVisitsByCountry } from '../../components/dashboard/analytics/analytics-visits-by-country';
-import { AnalyticsTrafficSources } from '../../components/dashboard/analytics/analytics-traffic-sources';
 import { Reports as ReportsIcon } from '../../icons/reports';
 import { gtm } from '../../lib/gtm';
 
@@ -80,7 +75,7 @@ const Analytics: NextPage = () => {
               </Grid>
             </Grid>
           </Box>
-          <AnalyticsGeneralOverview />
+        
           <Box sx={{ mt: 4 }}>
             <Grid
               container
@@ -91,28 +86,28 @@ const Analytics: NextPage = () => {
                 md={8}
                 xs={12}
               >
-                <AnalyticsTrafficSources sx={{ height: '100%' }} />
+               
               </Grid>
               <Grid
                 item
                 md={4}
                 xs={12}
               >
-                <AnalyticsVisitsByCountry />
+               
               </Grid>
               <Grid
                 item
                 md={8}
                 xs={12}
               >
-                <AnalyticsMostVisited />
+               
               </Grid>
               <Grid
                 item
                 md={4}
                 xs={12}
               >
-                <AnalyticsSocialSources />
+                
               </Grid>
             </Grid>
           </Box>

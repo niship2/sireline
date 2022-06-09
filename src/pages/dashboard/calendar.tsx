@@ -19,8 +19,8 @@ import type { Theme } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
-import { CalendarEventDialog } from '../../components/dashboard/calendar/calendar-event-dialog';
-import { CalendarToolbar } from '../../components/dashboard/calendar/calendar-toolbar';
+//import { CalendarEventDialog } from '../../components/dashboard/calendar/calendar-event-dialog';
+//import { CalendarToolbar } from '../../components/dashboard/calendar/calendar-toolbar';
 import { gtm } from '../../lib/gtm';
 import { getEvents, updateEvent } from '../../slices/calendar';
 import { useDispatch, useSelector } from '../../store';
@@ -248,16 +248,7 @@ const Calendar: NextPage = () => {
           py: 8
         }}
       >
-        <CalendarToolbar
-          date={date}
-          onAddClick={handleAddClick}
-          onDateNext={handleDateNext}
-          onDatePrev={handleDatePrev}
-          onDateToday={handleDateToday}
-          onViewChange={handleViewChange}
-          view={view}
-          mobile={smDown}
-        />
+        
         <FullCalendarWrapper>
           <FullCalendar
             allDayMaintainDuration
@@ -289,15 +280,7 @@ const Calendar: NextPage = () => {
           />
         </FullCalendarWrapper>
       </Box>
-      <CalendarEventDialog
-        event={selectedEvent}
-        onAddComplete={handleCloseDialog}
-        onClose={handleCloseDialog}
-        onDeleteComplete={handleCloseDialog}
-        onEditComplete={handleCloseDialog}
-        open={dialog.isOpen}
-        range={dialog.range}
-      />
+      
     </>
   );
 };
