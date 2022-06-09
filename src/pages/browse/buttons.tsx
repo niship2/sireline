@@ -31,18 +31,7 @@ const BrowseButtons: NextPage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            //element={<Buttons1 />}
-            name="Simple buttons"
-          />
-          <WidgetPreviewer
-            //element={<Buttons2 />}
-            name="Buttons with text and icon"
-          />
-          <WidgetPreviewer
-            //element={<Buttons3 />}
-            name="Button groups"
-          />
+
         </Container>
       </Box>
     </>
