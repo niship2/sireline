@@ -97,7 +97,7 @@ export function CarsGrid({filterkey="headipc",fields='土木技術',height=800}:
     ]);
 
 
-    const gridRef = useRef();
+    const gridRef = useRef(null);
     const myListener = ()=> {
         // api and columnApi on the gridRef object
         console.log("exe")
