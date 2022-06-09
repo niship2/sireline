@@ -20,8 +20,6 @@ import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
 import { socialApi } from '../../../__fake-api__/social-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { SocialConnections } from '../../../components/dashboard/social/social-connections';
-import { SocialTimeline } from '../../../components/dashboard/social/social-timeline';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Chat as ChatIcon } from '../../../icons/chat';
 import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
@@ -233,10 +231,6 @@ export const SocialProfile: NextPage = () => {
               ))}
             </Tabs>
             <Divider />
-            <Box sx={{ py: 3 }}>
-              {currentTab === 'timeline' && <SocialTimeline profile={profile} />}
-              {currentTab === 'connections' && <SocialConnections />}
-            </Box>
           </Container>
         </Box>
       </Box>
