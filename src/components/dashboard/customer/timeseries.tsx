@@ -45,6 +45,7 @@ export function TimeSeries(){
         setYvalary(yvals)
       })
     }, []);
+    
   
     const chartdata = {
       series: [
