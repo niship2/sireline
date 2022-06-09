@@ -5,8 +5,8 @@ import { Box, Container } from '@mui/material';
 import { BrowseLayout } from '../../components/browse-layout';
 import { MainLayout } from '../../components/main-layout';
 import { WidgetPreviewer } from '../../components/widget-previewer';
-import { ColorsMain } from '../../components/widgets/colors/colors-main';
-import { ColorsSeverity } from '../../components/widgets/colors/colors-severity';
+//import { ColorsMain } from '../../components/widgets/colors/colors-main';
+//import { ColorsSeverity } from '../../components/widgets/colors/colors-severity';
 import { gtm } from '../../lib/gtm';
 
 const BrowseColors: NextPage = () => {
@@ -30,14 +30,6 @@ const BrowseColors: NextPage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            element={<ColorsMain />}
-            name="Main colors"
-          />
-          <WidgetPreviewer
-            element={<ColorsSeverity />}
-            name="Severity colors"
-          />
         </Container>
       </Box>
     </>
