@@ -5,8 +5,8 @@ import NextLink from 'next/link';
 import Head from 'next/head';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import { CheckoutBilling } from '../components/checkout/checkout-billing';
-import { CheckoutOrderSummary } from '../components/checkout/checkout-order-summary';
+//import { CheckoutBilling } from '../components/checkout/checkout-billing';
+//import { CheckoutOrderSummary } from '../components/checkout/checkout-order-summary';
 import { ArrowLeft as ArrowLeftIcon } from '../icons/arrow-left';
 import { ArrowRight as ArrowRightIcon } from '../icons/arrow-right';
 import { Lock as LockIcon } from '../icons/lock';
@@ -138,23 +138,14 @@ const Checkout: NextPage = () => {
                   md={7}
                   xs={12}
                 >
-                  <CheckoutBilling
-                    billing={billing}
-                    onChange={handleBillingChange}
-                  />
+                  
                 </Grid>
                 <Grid
                   item
                   md={5}
                   xs={12}
                 >
-                  <CheckoutOrderSummary
-                    onQuantityChange={handleProductQuantityChange}
-                    products={products}
-                    shippingTax={shippingTax}
-                    subtotal={subtotal}
-                    total={total}
-                  />
+                
                 </Grid>
               </Grid>
             </Box>
