@@ -12,10 +12,15 @@
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-graph-network": "^1.0.6",
+    "vis-network": "^9.1.2",
     "vis-react": "^0.5.1"
   },
   "devDependencies": {
+    "@types/node": "^17.0.42",
+    "@types/react": "^18.0.12",
     "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "typescript": "^4.7.3"
   }
 }
