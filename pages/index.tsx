@@ -1,7 +1,9 @@
 //import Graph from "react-graph-vis";
+//import GraphVis from 'react-graph-vis'
 import dynamic from "next/dynamic";
-import React, {useState,useEffect} from "react";
+import React, {useState,useContext} from "react";
 import getRaceHorse from "../components/getRacehorse";
+import { Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 
 // 追加
 const Graph = dynamic(() => import('react-graph-vis'), {
@@ -9,14 +11,51 @@ const Graph = dynamic(() => import('react-graph-vis'), {
 })
 
 
+
 const App = () => {
+
+
+
+  const [network,Setnetwork] = useState(null)
+ 
+
+  const [inputhorse,setInputhorse] = useState('フジキセキ');
+  function movetosearchhorse(search){
+    try{
+    network.moveTo({
+      position: network.getPosition(search), //{x: 1000, y: 0},
+      scale: 2.0,
+      })
+
+    const connectednodes = network.getConnectedNodes(inputhorse)
+    //alert(connectednodes)
+    }catch{
+
+    }
+    
+
+  }
+  
+  if (network === null){}else{
+    movetosearchhorse(inputhorse)
+  }
+
+
+
   
   const [options,SetOptions]=useState({
-    nodes:{shape:"box",font:"5px"},
-    layout: {hierarchical: false,
-      improvedLayout:false,},
+    nodes:{
+      shape:"box"
+      ,font:{size:5}
+      ,group:"Modularity Class"
+    },
+      
+    layout: {
+      hierarchical: false,
+      improvedLayout:false,
+    },
     edges: { color: "#000000"},
-    physics:{enabled: true}
+    physics:{enabled: false}
   });
 
   //setGraphd(data.graph) 
@@ -41,53 +80,62 @@ const App = () => {
     }
   
   }else{
+    //var container = document.getElementById('mynetwork');
+    //var network = new vis.Network(container, graphd.graph,options);
     
+
   }
 
-
-  const {events,setEvents} = useState({
+  
+  const [state, setState] = useState({
+    counter: 10,
     events: {
-      select: ({ nodes, edges }) => {
-        console.log("Selected nodes:");
-        console.log(nodes);
-        console.log("Selected edges:");
-        console.log(edges);
-        alert("Selected node: " + nodes);
+      select: ({ nodes, edges,pointer: { canvas } }) => {
+        
+        const node_url = "https://ja.wikipedia.org/wiki/"+nodes
+        //const node_url = encodeURI("https://www.jbis.or.jp/horse/result/?keyword="+nodes)
+        window.open(node_url, '_blank');
+        //console.log(nodes);
+        //console.log("Selected edges:");
+        //console.log(edges);
+        //alert(nodes);
+        //alert(nodes.Id)
+        //alert(canvas.x)
+        
+        
       },
       doubleClick: ({ pointer: { canvas } }) => {
-        alert(canvas.x)
+        //alert(canvas.x)
         //createNode(canvas.x, canvas.y);
+      },
+      afterDrawing:({})=>{
+        //alert("描画しました")
       }
     }
-   
   })
 
-//  const [state, setState] = useState({
-//    counter: 10,
-//    graph:data.graph,//graphd, //data.graph,
-//    events: {
-//      select: ({ nodes, edges }) => {
-//        console.log("Selected nodes:");
-//        console.log(nodes);
-//        console.log("Selected edges:");
-//        console.log(edges);
-//        alert("Selected node: " + nodes);
-//      },
-//      doubleClick: ({ pointer: { canvas } }) => {
-//        alert(canvas.x)
-//        //createNode(canvas.x, canvas.y);
-//      }
-//    }
-//  })
+  const { events } = state;
 
-//  const { graph, events } = state;
-
-
+ 
   return (
     <>
     <div>
-    
-    <Graph graph={graphd.graph} options={options} events={events} style={{ height: "800px" }} />
+    <TextField id="outlined-basic" label="馬名入力"
+    onKeyPress={(event) => setInputhorse(event.target.value)} />
+    <Graph 
+      graph={graphd.graph} 
+      options={options} 
+      events={events} 
+      style={{ height: "800px" }}
+     //getNetwork={this.setNetworkInstance}
+      getNetwork={network => {
+        Setnetwork(network)
+        
+        //console.log(network.getViewPosition())
+        //options.physics.enabled = falase
+        //SetOptions(options)
+        
+      }} />
     </div>
     </>
   );

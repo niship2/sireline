@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
       <div>
-       FOOTERRRRRR!
+       何か入れる
       </div>
     )
   }
