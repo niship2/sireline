@@ -121,7 +121,7 @@ const App = () => {
     <>
     <div>
     <TextField id="outlined-basic" label="馬名入力"
-    onKeyPress={(event) => setInputhorse(event.target.value)} />
+    onChange={(event) => setInputhorse(event.target.value)} />
     <Graph 
       graph={graphd.graph} 
       options={options} 
