@@ -8,8 +8,18 @@ import { Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui
 // 追加
 const Graph = dynamic(() => import('react-graph-vis'), {
   ssr: false,
+  
 })
 
+
+interface graphParams{
+  graph:string,
+  options:string,
+  events:string ,
+  style:string,
+  getNetwork:Function
+
+}
 
 
 const App = () => {
@@ -94,7 +104,14 @@ const App = () => {
         
         const node_url = "https://ja.wikipedia.org/wiki/"+nodes
         //const node_url = encodeURI("https://www.jbis.or.jp/horse/result/?keyword="+nodes)
-        window.open(node_url, '_blank');
+        let result = window.confirm('Wikipediaの馬名リンクに飛びますか？');
+        if( result ) {
+          window.open(node_url, '_blank');
+        }
+        else {
+            
+        }
+        
         //console.log(nodes);
         //console.log("Selected edges:");
         //console.log(edges);
@@ -121,13 +138,14 @@ const App = () => {
     <>
     <div>
     <TextField id="outlined-basic" label="馬名入力"
+    placeholder="フジキセキ"
     onChange={(event) => setInputhorse(event.target.value)} />
     <Graph 
       graph={graphd.graph} 
       options={options} 
       events={events} 
       style={{ height: "800px" }}
-     //getNetwork={this.setNetworkInstance}
+    
       getNetwork={network => {
         Setnetwork(network)
         
