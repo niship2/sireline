@@ -12,14 +12,10 @@ const Graph = dynamic(() => import('react-graph-vis'), {
 })
 
 
-interface graphParams{
-  graph:string,
-  options:string,
-  events:string ,
-  style:string,
-  getNetwork:Function
 
-}
+
+
+
 
 
 const App = () => {
@@ -133,7 +129,6 @@ const App = () => {
 
   const { events } = state;
 
- 
   return (
     <>
     <div>
@@ -141,7 +136,7 @@ const App = () => {
     placeholder="フジキセキ"
     onChange={(event) => setInputhorse(event.target.value)} />
     <Graph 
-      graph={graphd.graph} 
+      graph={graphd.graph}
       options={options} 
       events={events} 
       style={{ height: "800px" }}
@@ -153,7 +148,8 @@ const App = () => {
         //options.physics.enabled = falase
         //SetOptions(options)
         
-      }} />
+      }} 
+      />
     </div>
     </>
   );
