@@ -2,7 +2,7 @@ import useSWR from 'swr';
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
-export default function getRaceHorse () {
+export default function GetRaceHorse () {
   const { data, error } = useSWR(`/api/hello`, fetcher)
   return {
     graphd: data,

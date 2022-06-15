@@ -2,7 +2,7 @@
 //import GraphVis from 'react-graph-vis'
 import dynamic from "next/dynamic";
 import React, {useState,useContext} from "react";
-import getRaceHorse from "../components/getRacehorse";
+import GetRaceHorse from "../components/getRacehorse";
 import { Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 
 // 追加
@@ -67,7 +67,7 @@ const App = () => {
   //setGraphd(data.graph) 
 
 
-  var {graphd,isLoading,isError} = getRaceHorse();
+  var {graphd,isLoading,isError} = GetRaceHorse();
   
   //setGraphd(graphd.graph) 
 
