@@ -1,7 +1,7 @@
 //import Graph from "react-graph-vis";
 //import GraphVis from 'react-graph-vis'
 import dynamic from "next/dynamic";
-import React, {useState,useContext, useEffect} from "react";
+import React, {useState,useContext,useCallback, useEffect,useRef} from "react";
 import GetRaceHorse from "../components/getRacehorse";
 import { Button,Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 import { useAmp } from "next/amp";
@@ -20,32 +20,38 @@ const App = () => {
 
 
 
-  const [network,setNetwork] = useState()
- 
+  const [network,setNetwork] = useState(null)
 
-  const [inputhorse,setInputhorse] = useState('フジキセキ');
+  useEffect(()=>{
+    movetosearchhorse("フジキセキ")
+  })
+
+  useEffect(()=>{
+    try{
+      network.on("selectNode", function (params) {
+        if (params.nodes.length == 1) {
+          if (network.isCluster(params.nodes[0]) == true) {
+            network.openCluster(params.nodes[0]);
+          }
+        }
+      });
+    }catch{}
+  })
+
+
   function movetosearchhorse(search){
+    console.log("moveto")
+    console.log(network)
     try{
     network.moveTo({
-      position: network.getPosition(search), //{x: 1000, y: 0},
+      position: network.getPosition(search), 
       scale: 2.0,
       })
-
     const connectednodes = network.getConnectedNodes(inputhorse)
-    //alert(connectednodes)
-    }catch{
-
-    }
-    
-
+    alert(connectednodes)
+    }catch{}
   }
-  
-  if (network === null){}else{
-    movetosearchhorse(inputhorse)
-  }
-
-
-
+   
   
   const [options,SetOptions]=useState({
     nodes:{
@@ -62,29 +68,16 @@ const App = () => {
     physics:{enabled: false}
   });
 
-  //setGraphd(data.graph) 
-
   const [ graphd, setGraphd ] = useState(graphd2[0]);
-  //let {graphd,isLoading,isError} = GetRaceHorse();
- 
-  //最初の時だけgraphdが失敗するので入れておく。
-  //if (typeof graphd === 'undefined'){
-  //  graphd = {
-  //    graph:{
-  //      nodes: [],  
-  //      edges: [] 
-  //    }
-  //  }
-  //
-  //}else{}
-
   
-  function clusterByCmoduclass(searchid) {
-    //console.log(graphd.graph.nodes[0].attributes["Modularity Class"])
-    console.log(graphd)
-    network.setData(graphd.graph);
+  function clusterByCmoduclass(searchid,x,y) {
+    console.log("cluste")
+    console.log(network)
+       
+    //network.setData(graphd.graph);
 
-    console.log(graphd.graph.nodes)
+    //console.log(searchid)
+    //network.setData(graphd.graph);
 
     const selectednode = graphd.graph.nodes.filter(val=> val.id == searchid)
     const modu_num = selectednode[0].attributes['Modularity Class']
@@ -97,74 +90,87 @@ const App = () => {
         return childOptions["attributes"]["Modularity Class"] == modu_num;
       },
       clusterNodeProperties: {
-        id: "cidCluster",
+        id: searchid + "グループ",
+        label:searchid + "グループ",
+        title:searchid + "グループ",
+        attributes:{"Modularity Class":modu_num},
         borderWidth: 3,
         shape: "database",
+        size:25,
+        x:x,
+        y:y
       },
     };
     network.cluster(clusterOptionsByData);
-    Setnetwork(network)
+    movetosearchhorse("idCluster")
+    console.log(network)
+    setNetwork(network)
   }
 
 
-  const [state, setState] = useState({
-    counter: 10,
+//  const [state, setState] = useState({
+  const state={
+    graph:graphd.graph,
     events: {
       select: ({ nodes, edges,pointer: { canvas } }) => {
+
+        console.log("nodeselect")
+        console.log(nodes)
         
         const node_url = "https://ja.wikipedia.org/wiki/"+nodes
         //const node_url = encodeURI("https://www.jbis.or.jp/horse/result/?keyword="+nodes)
-        let result = window.confirm('Wikipediaの馬名リンクに飛びますか？');
-        if( result ) {
-          window.open(node_url, '_blank');
-        }
-        else {
-            
-        }
+        //let result = window.confirm('Wikipediaの馬名リンクに飛びますか？');
+        //if( result ) {
+        //  window.open(node_url, '_blank');
+        //}
+        //else {
+        //    
+        //}
         
         
       },
       doubleClick: ({nodes, pointer: { canvas } }) => {
         //alert(canvas.x)
         //createNode(canvas.x, canvas.y);
-        clusterByCmoduclass(nodes.Id)
+        console.log(network)
+        //setNetwork(network)
+        clusterByCmoduclass(nodes[0],canvas.x,canvas.y)
       },
       afterDrawing:({})=>{
         //alert("描画しました")
       }
     }
-  })
+  }
 
-  const { events } = state;
+  const { graph, events } = state;
 
   return (
     <>
     <div>
-    <Button
+<Button
   onClick={() => {
-    clusterByCmoduclass("サンデーサイレンス");
+    clusterall();
   }}
 >
-  Click me
+  クラスタでまとめあげ
 </Button>
     <TextField id="outlined-basic" label="馬名入力"
     placeholder="フジキセキ"
-    onChange={(event) => setInputhorse(event.target.value)} />
+    //onChange={(event) => setInputhorse(event.target.value)} 
+    onChange={(event)=>movetosearchhorse(event.target.value)}
+    />
 
     <Graph 
-      graph={graphd.graph}
+      graph={graph}
       options={options} 
       events={events} 
       style={{ height: "800px" }}
     
       getNetwork={network => {
         setNetwork(network)
-
-        //console.log(network.getViewPosition())
-        //options.physics.enabled = falase
-        //SetOptions(options)
         
-      }} 
+      }}
+       
       />
     </div>
     </>
