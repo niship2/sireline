@@ -1,10 +1,11 @@
 //import Graph from "react-graph-vis";
 //import GraphVis from 'react-graph-vis'
 import dynamic from "next/dynamic";
-import React, {useState,useContext} from "react";
+import React, {useState,useContext, useEffect} from "react";
 import GetRaceHorse from "../components/getRacehorse";
-import { Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
+import { Button,Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 import { useAmp } from "next/amp";
+import graphd2 from "../public/sireline.json"
 
 // 追加
 const Graph = dynamic(() => import('react-graph-vis'), {
@@ -15,15 +16,11 @@ const Graph = dynamic(() => import('react-graph-vis'), {
 
 
 
-
-
-
-
 const App = () => {
 
 
 
-  const [network,Setnetwork] = useState(null)
+  const [network,setNetwork] = useState()
  
 
   const [inputhorse,setInputhorse] = useState('フジキセキ');
@@ -67,33 +64,49 @@ const App = () => {
 
   //setGraphd(data.graph) 
 
-
-  var {graphd,isLoading,isError} = GetRaceHorse();
-  
-  //setGraphd(graphd.graph) 
-
+  const [ graphd, setGraphd ] = useState(graphd2[0]);
+  //let {graphd,isLoading,isError} = GetRaceHorse();
+ 
   //最初の時だけgraphdが失敗するので入れておく。
-  if (typeof graphd === 'undefined'){
-    graphd = {
-      graph:{
-        nodes: [
-          {id:"アイルビーバウンド",label:"アイルビーバウンド",x:10,y:10},
-          {id:"ドラセナ",label:"ドラセナ",x:300,y:300},
-        ],  
-        edges: [
-          {from: "アイルビーバウンド",to:"ドラセナ"}
-        ]    
-      }
-    }
-  
-  }else{
-    //var container = document.getElementById('mynetwork');
-    //var network = new vis.Network(container, graphd.graph,options);
-    
+  //if (typeof graphd === 'undefined'){
+  //  graphd = {
+  //    graph:{
+  //      nodes: [],  
+  //      edges: [] 
+  //    }
+  //  }
+  //
+  //}else{}
 
+  
+  function clusterByCmoduclass(searchid) {
+    //console.log(graphd.graph.nodes[0].attributes["Modularity Class"])
+    console.log(graphd)
+    network.setData(graphd.graph);
+
+    console.log(graphd.graph.nodes)
+
+    const selectednode = graphd.graph.nodes.filter(val=> val.id == searchid)
+    const modu_num = selectednode[0].attributes['Modularity Class']
+    //console.log()
+
+    var clusterOptionsByData = {
+      joinCondition: function (childOptions) {
+        //console.log(childOptions['attributes']["Modularity Class"])
+        //console.log(childOptions['id'])
+        return childOptions["attributes"]["Modularity Class"] == modu_num;
+      },
+      clusterNodeProperties: {
+        id: "cidCluster",
+        borderWidth: 3,
+        shape: "database",
+      },
+    };
+    network.cluster(clusterOptionsByData);
+    Setnetwork(network)
   }
 
-  
+
   const [state, setState] = useState({
     counter: 10,
     events: {
@@ -109,18 +122,12 @@ const App = () => {
             
         }
         
-        //console.log(nodes);
-        //console.log("Selected edges:");
-        //console.log(edges);
-        //alert(nodes);
-        //alert(nodes.Id)
-        //alert(canvas.x)
-        
         
       },
-      doubleClick: ({ pointer: { canvas } }) => {
+      doubleClick: ({nodes, pointer: { canvas } }) => {
         //alert(canvas.x)
         //createNode(canvas.x, canvas.y);
+        clusterByCmoduclass(nodes.Id)
       },
       afterDrawing:({})=>{
         //alert("描画しました")
@@ -133,9 +140,17 @@ const App = () => {
   return (
     <>
     <div>
+    <Button
+  onClick={() => {
+    clusterByCmoduclass("サンデーサイレンス");
+  }}
+>
+  Click me
+</Button>
     <TextField id="outlined-basic" label="馬名入力"
     placeholder="フジキセキ"
     onChange={(event) => setInputhorse(event.target.value)} />
+
     <Graph 
       graph={graphd.graph}
       options={options} 
@@ -143,8 +158,8 @@ const App = () => {
       style={{ height: "800px" }}
     
       getNetwork={network => {
-        Setnetwork(network)
-        
+        setNetwork(network)
+
         //console.log(network.getViewPosition())
         //options.physics.enabled = falase
         //SetOptions(options)
