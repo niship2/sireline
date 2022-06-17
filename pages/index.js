@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import React, {useState,useContext} from "react";
 import GetRaceHorse from "../components/getRacehorse";
 import { Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
+import { useAmp } from "next/amp";
 
 // 追加
 const Graph = dynamic(() => import('react-graph-vis'), {

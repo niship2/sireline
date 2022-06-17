@@ -1,4 +1,6 @@
 import getRaceHorse from "../components/getRacehorse";
+import type { NextMiddleware } from 'next/server'
+import type { NextFetchEvent } from 'next/server'
 
 function Profile() {
   //const fetcher = (...args) => fetch(...args).then(res => res.json());
@@ -12,7 +14,8 @@ function Profile() {
 
   if (isError) return <div>failed to load</div>
   if (!graphd) return <div>loading...</div>
-  return <div>hello {graphd["graph"]["nodes"][0]["id"]}!</div>
+  return <div>hello {graphd["graph"]["nodes"][0]["id"]}!
+  </div>
 }
 
 export default Profile
