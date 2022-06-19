@@ -1,6 +1,5 @@
 import Navbar from './navbar'
 import Footer from './footer'
-import AmpSidebar from './ampsidebar'
 
 
 export default function Layout({ children }) {
@@ -8,7 +7,7 @@ export default function Layout({ children }) {
     <>
       <Navbar />
       
-      <main>{children}<AmpSidebar /></main>
+      <main>{children}</main>
       <Footer />
     </>
   )

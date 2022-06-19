@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import React, {useState,useContext,useCallback, useEffect,useRef} from "react";
 import GetRaceHorse from "../components/getRacehorse";
 import { Button,Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
-import { useAmp } from "next/amp";
 import graphd2 from "../public/sireline.json"
 
 // 追加
