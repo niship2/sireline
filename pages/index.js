@@ -21,10 +21,21 @@ const App = () => {
 
 
   const [network,setNetwork] = useState(null)
+  const [physicschecked,setphysicschecked] = useState(false)
+  const [ graphd, setGraphd ] = useState(graphd2[0]);
+  
+  const handleChange = (event) => { 
+    setphysicschecked(event.target.checked)
+    options.physics["enabled"] = event.target.checked
+    
+    setOptions(options)
+    setNetwork(network)
+    setGraphd(graphd)
+  }; 
 
-  useEffect(()=>{
-    movetosearchhorse("フジキセキ")
-  })
+  //useEffect(()=>{
+  //  movetosearchhorse("フジキセキ")
+  //})
 
   useEffect(()=>{
     try{
@@ -40,8 +51,8 @@ const App = () => {
 
 
   function movetosearchhorse(search){
-    console.log("moveto")
-    console.log(network)
+    //console.log("moveto")
+    //console.log(network)
     try{
     network.moveTo({
       position: network.getPosition(search), 
@@ -53,7 +64,7 @@ const App = () => {
   }
    
   
-  const [options,SetOptions]=useState({
+  const [options,setOptions]=useState({
     nodes:{
       shape:"box"
       ,font:{size:5}
@@ -65,22 +76,18 @@ const App = () => {
       improvedLayout:false,
     },
     edges: { color: "#000000"},
-    physics:{enabled: false}
+    physics:{enabled: physicschecked}
   });
 
-  const [ graphd, setGraphd ] = useState(graphd2[0]);
   
-  function clusterByCmoduclass(searchid,x,y) {
-    console.log("cluste")
-    console.log(network)
-       
-    //network.setData(graphd.graph);
-
-    //console.log(searchid)
-    //network.setData(graphd.graph);
-
+  
+  function clusterByCmoduclass(searchid) {
+    //console.log("cluste")
+    //console.log(network)
     const selectednode = graphd.graph.nodes.filter(val=> val.id == searchid)
     const modu_num = selectednode[0].attributes['Modularity Class']
+    const x = selectednode[0].x
+    const y = selectednode[0].y
     //console.log()
 
     var clusterOptionsByData = {
@@ -103,9 +110,283 @@ const App = () => {
     };
     network.cluster(clusterOptionsByData);
     movetosearchhorse("idCluster")
-    console.log(network)
+    //console.log(network)
     setNetwork(network)
   }
+
+  function clustering(){
+    clusterByCmoduclass("アイルハヴアナザー")
+    clusterByCmoduclass("アグネスタキオン")
+    clusterByCmoduclass("アグネスデジタル")
+    clusterByCmoduclass("アグネスフライト")
+    clusterByCmoduclass("アサティス")
+    clusterByCmoduclass("アジュディケーティング")
+    clusterByCmoduclass("アスワン")
+    clusterByCmoduclass("アッミラーレ")
+    clusterByCmoduclass("アドマイヤコジーン")
+    clusterByCmoduclass("アドマイヤジャパン")
+    clusterByCmoduclass("アドマイヤベガ")
+    clusterByCmoduclass("アドマイヤボス")
+    clusterByCmoduclass("アドマイヤマックス")
+    clusterByCmoduclass("アドマイヤムーン")
+    clusterByCmoduclass("アフリート")
+    clusterByCmoduclass("アラジ")
+    clusterByCmoduclass("アルカセット")
+    clusterByCmoduclass("アルデバラン")
+    clusterByCmoduclass("アレミロード")
+    clusterByCmoduclass("アンバーシャダイ")
+    clusterByCmoduclass("ウイニングチケット")
+    clusterByCmoduclass("ウォーエンブレム")
+    clusterByCmoduclass("ウォーニング")
+    clusterByCmoduclass("ウッドマン")
+    clusterByCmoduclass("エアジハード")
+    clusterByCmoduclass("エイシンサンディ")
+    clusterByCmoduclass("エイシンフラッシュ")
+    clusterByCmoduclass("エピファネイア")
+    clusterByCmoduclass("エブロス")
+    clusterByCmoduclass("エリシオ")
+    clusterByCmoduclass("エルコンドルパサー")
+    clusterByCmoduclass("エルハーブ")
+    clusterByCmoduclass("エンドスウィープ")
+    clusterByCmoduclass("エンパイアメーカー")
+    clusterByCmoduclass("エーピーインディ")
+    clusterByCmoduclass("オジジアン")
+    clusterByCmoduclass("オペラハウス")
+    clusterByCmoduclass("オルフェーヴル")
+    clusterByCmoduclass("オレハマッテルゼ")
+    clusterByCmoduclass("オンファイア")
+    clusterByCmoduclass("オース")
+    clusterByCmoduclass("カコイーシーズ")
+    clusterByCmoduclass("カジノドライヴ")
+    clusterByCmoduclass("カネヒキリ")
+    clusterByCmoduclass("カリスタグローリ")
+    clusterByCmoduclass("カリズマティック")
+    clusterByCmoduclass("カンパニー")
+    clusterByCmoduclass("カーネギー")
+    clusterByCmoduclass("カーリアン")
+    clusterByCmoduclass("キズナ")
+    clusterByCmoduclass("キャプテンスティーヴ")
+    clusterByCmoduclass("キングカメハメハ")
+    clusterByCmoduclass("キンググローリアス")
+    clusterByCmoduclass("キングズベスト")
+    clusterByCmoduclass("キングヘイロー")
+    clusterByCmoduclass("キングマンボ")
+    clusterByCmoduclass("キンシャサノキセキ")
+    clusterByCmoduclass("クリエイター")
+    clusterByCmoduclass("クリスタルグリッターズ")
+    clusterByCmoduclass("クリミナルタイプ")
+    clusterByCmoduclass("クロコルージュ")
+    clusterByCmoduclass("クロフネ")
+    clusterByCmoduclass("グラスワンダー")
+    clusterByCmoduclass("グランデラ")
+    clusterByCmoduclass("グランプリボス")
+    clusterByCmoduclass("グルームダンサー")
+    clusterByCmoduclass("ケイムホーム")
+    clusterByCmoduclass("ケープブランコ")
+    clusterByCmoduclass("コマンダーインチーフ")
+    clusterByCmoduclass("コロナドズクエスト")
+    clusterByCmoduclass("コンデュイット")
+    clusterByCmoduclass("ゴールデンフェザント")
+    clusterByCmoduclass("ゴールドアリュール")
+    clusterByCmoduclass("ゴールドシップ")
+    clusterByCmoduclass("ゴールドヘイロー")
+    clusterByCmoduclass("ゴーンウェスト")
+    clusterByCmoduclass("サウスヴィグラス")
+    clusterByCmoduclass("サクラチトセオー")
+    clusterByCmoduclass("サクラバクシンオー")
+    clusterByCmoduclass("サクラプレジデント")
+    clusterByCmoduclass("サクラユタカオー")
+    clusterByCmoduclass("サクラローレル")
+    clusterByCmoduclass("サッカーボーイ")
+    clusterByCmoduclass("サドラーズウェルズ")
+    clusterByCmoduclass("サニーブライアン")
+    clusterByCmoduclass("サマーサスピション")
+    clusterByCmoduclass("サムライハート")
+    clusterByCmoduclass("サンシャインフォーエヴァー")
+    clusterByCmoduclass("サンダーガルチ")
+    clusterByCmoduclass("サンデーサイレンス")
+    clusterByCmoduclass("シアトリカル")
+    clusterByCmoduclass("シアトルスルー")
+    clusterByCmoduclass("シアトルダンサー２")
+    clusterByCmoduclass("シニスターミニスター")
+    clusterByCmoduclass("シャンハイ")
+    clusterByCmoduclass("シャーディー")
+    clusterByCmoduclass("ショウナンカンプ")
+    clusterByCmoduclass("シルヴァーチャーム")
+    clusterByCmoduclass("シンボリクリスエス")
+    clusterByCmoduclass("シンボリルドルフ")
+    clusterByCmoduclass("シーキングザゴールド")
+    clusterByCmoduclass("ジェイドロバリー")
+    clusterByCmoduclass("ジェニュイン")
+    clusterByCmoduclass("ジェネラス")
+    clusterByCmoduclass("ジャイアンツコーズウェイ")
+    clusterByCmoduclass("ジャスタウェイ")
+    clusterByCmoduclass("ジャングルポケット")
+    clusterByCmoduclass("ジョリーズヘイロー")
+    clusterByCmoduclass("スウェプトオーヴァーボード")
+    clusterByCmoduclass("スキャターザゴールド")
+    clusterByCmoduclass("スキャン")
+    clusterByCmoduclass("スクリーンヒーロー")
+    clusterByCmoduclass("スクワートルスクワート")
+    clusterByCmoduclass("スズカフェニックス")
+    clusterByCmoduclass("スズカマンボ")
+    clusterByCmoduclass("スタテューオブリバティ")
+    clusterByCmoduclass("スターオブコジーン")
+    clusterByCmoduclass("スターオヴコジーン")
+    clusterByCmoduclass("スターリングローズ")
+    clusterByCmoduclass("ステイゴールド")
+    clusterByCmoduclass("ストラヴィンスキー")
+    clusterByCmoduclass("ストロングリターン")
+    clusterByCmoduclass("ストーミングホーム")
+    clusterByCmoduclass("ストームキャット")
+    clusterByCmoduclass("スペシャルウィーク")
+    clusterByCmoduclass("スマートファルコン")
+    clusterByCmoduclass("スリルショー")
+    clusterByCmoduclass("ゼンノエルシド")
+    clusterByCmoduclass("ゼンノロブロイ")
+    clusterByCmoduclass("ソウルオブザマター")
+    clusterByCmoduclass("ソングオブウインド")
+    clusterByCmoduclass("ソヴィエトスター")
+    clusterByCmoduclass("タイキシャトル")
+    clusterByCmoduclass("タイキブリザード")
+    clusterByCmoduclass("タイトスポット")
+    clusterByCmoduclass("タイムパラドックス")
+    clusterByCmoduclass("タニノギムレット")
+    clusterByCmoduclass("タバスコキャット")
+    clusterByCmoduclass("タマモクロス")
+    clusterByCmoduclass("タヤスツヨシ")
+    clusterByCmoduclass("タートルボウル")
+    clusterByCmoduclass("ダイナガリバー")
+    clusterByCmoduclass("ダイワメジャー")
+    clusterByCmoduclass("ダノンシャンティ")
+    clusterByCmoduclass("ダンカーク")
+    clusterByCmoduclass("ダンシングブレーヴ")
+    clusterByCmoduclass("ダンジグ")
+    clusterByCmoduclass("ダンスインザダーク")
+    clusterByCmoduclass("チチカステナンゴ")
+    clusterByCmoduclass("チーフベアハート")
+    clusterByCmoduclass("ティッカネン")
+    clusterByCmoduclass("ティンバーカントリー")
+    clusterByCmoduclass("テイエムオペラオー")
+    clusterByCmoduclass("テンビー")
+    clusterByCmoduclass("ディアブロ")
+    clusterByCmoduclass("ディープインパクト")
+    clusterByCmoduclass("ディープスカイ")
+    clusterByCmoduclass("ディープブリランテ")
+    clusterByCmoduclass("デインヒル")
+    clusterByCmoduclass("デザートキング")
+    clusterByCmoduclass("デヒア")
+    clusterByCmoduclass("デュラブ")
+    clusterByCmoduclass("デュランダル")
+    clusterByCmoduclass("トゥザグローリー")
+    clusterByCmoduclass("トウカイテイオー")
+    clusterByCmoduclass("トウショウボーイ")
+    clusterByCmoduclass("トニービン")
+    clusterByCmoduclass("トワイニング")
+    clusterByCmoduclass("トーセンジョーダン")
+    clusterByCmoduclass("トーセンホマレボシ")
+    clusterByCmoduclass("ドゥラメンテ")
+    clusterByCmoduclass("ドクターデヴィアス")
+    clusterByCmoduclass("ドリームジャーニー")
+    clusterByCmoduclass("ナカヤマフェスタ")
+    clusterByCmoduclass("ナリタトップロード")
+    clusterByCmoduclass("ナリタブライアン")
+    clusterByCmoduclass("ニホンピロウイナー")
+    clusterByCmoduclass("ニューイングランド")
+    clusterByCmoduclass("ヌレイエフ")
+    clusterByCmoduclass("ネオユニヴァース")
+    clusterByCmoduclass("ノヴェリスト")
+    clusterByCmoduclass("ノーザンテースト")
+    clusterByCmoduclass("ハンセル")
+    clusterByCmoduclass("ハーツクライ")
+    clusterByCmoduclass("ハービンジャー")
+    clusterByCmoduclass("バゴ")
+    clusterByCmoduclass("バトルプラン")
+    clusterByCmoduclass("バブルガムフェロー")
+    clusterByCmoduclass("バンブーアトラス")
+    clusterByCmoduclass("パイロ")
+    clusterByCmoduclass("パラダイスクリーク")
+    clusterByCmoduclass("パークリージェント")
+    clusterByCmoduclass("ビワハヤヒデ")
+    clusterByCmoduclass("ピルサドスキー")
+    clusterByCmoduclass("ファスリエフ")
+    clusterByCmoduclass("ファルブラヴ")
+    clusterByCmoduclass("ファンタスティックライト")
+    clusterByCmoduclass("フォーティナイナー")
+    clusterByCmoduclass("フォーティーナイナーズサン")
+    clusterByCmoduclass("フサイチコンコルド")
+    clusterByCmoduclass("フサイチソニック")
+    clusterByCmoduclass("フサイチペガサス")
+    clusterByCmoduclass("フジキセキ")
+    clusterByCmoduclass("フリオーソ")
+    clusterByCmoduclass("フレンチデピュティ")
+    clusterByCmoduclass("ブライアンズタイム")
+    clusterByCmoduclass("ブラックタイアフェアー")
+    clusterByCmoduclass("ブラックタイド")
+    clusterByCmoduclass("ブラックタキシード")
+    clusterByCmoduclass("ブラックホーク")
+    clusterByCmoduclass("ブレイヴェストローマン")
+    clusterByCmoduclass("プリサイスエンド")
+    clusterByCmoduclass("ヘクタープロテクター")
+    clusterByCmoduclass("ヘニーヒューズ")
+    clusterByCmoduclass("ベルシャザール")
+    clusterByCmoduclass("ペンタイア")
+    clusterByCmoduclass("ホリスキー")
+    clusterByCmoduclass("ホワイトマズル")
+    clusterByCmoduclass("ボストンハーバー")
+    clusterByCmoduclass("マイニング")
+    clusterByCmoduclass("マイネルラヴ")
+    clusterByCmoduclass("マジェスティックウォリアー")
+    clusterByCmoduclass("マツリダゴッホ")
+    clusterByCmoduclass("マヤノトップガン")
+    clusterByCmoduclass("マリエンバード")
+    clusterByCmoduclass("マルゼンスキー")
+    clusterByCmoduclass("マンハッタンカフェ")
+    clusterByCmoduclass("マーベラスサンデー")
+    clusterByCmoduclass("ミシル")
+    clusterByCmoduclass("ミスターシービー")
+    clusterByCmoduclass("ミスタープロスペクター")
+    clusterByCmoduclass("ミラクルアドマイヤ")
+    clusterByCmoduclass("ミルジョージ")
+    clusterByCmoduclass("ムーンバラッド")
+    clusterByCmoduclass("メイショウオウドウ")
+    clusterByCmoduclass("メイショウサムソン")
+    clusterByCmoduclass("メイショウドトウ")
+    clusterByCmoduclass("メイショウボーラー")
+    clusterByCmoduclass("メジロマックイーン")
+    clusterByCmoduclass("メジロライアン")
+    clusterByCmoduclass("モガミ")
+    clusterByCmoduclass("モンテロッソ")
+    clusterByCmoduclass("モーリス")
+    clusterByCmoduclass("ヤマニンゼファー")
+    clusterByCmoduclass("ヨハネスブルグ")
+    clusterByCmoduclass("ラストタイクーン")
+    clusterByCmoduclass("ラッキーソヴリン")
+    clusterByCmoduclass("ラムタラ")
+    clusterByCmoduclass("リアルインパクト")
+    clusterByCmoduclass("リアルシャダイ")
+    clusterByCmoduclass("リズム")
+    clusterByCmoduclass("リンカーン")
+    clusterByCmoduclass("リンドシェーバー")
+    clusterByCmoduclass("リーチザクラウン")
+    clusterByCmoduclass("ルーラーシップ")
+    clusterByCmoduclass("ルールオブロー")
+    clusterByCmoduclass("ロイヤルスキー")
+    clusterByCmoduclass("ロイヤルタッチ")
+    clusterByCmoduclass("ロックオヴジブラルタル")
+    clusterByCmoduclass("ロドリゴデトリアーノ")
+    clusterByCmoduclass("ローエングリン")
+    clusterByCmoduclass("ロージズインメイ")
+    clusterByCmoduclass("ロードカナロア")
+    clusterByCmoduclass("ワイルドラッシュ")
+    clusterByCmoduclass("ワークフォース")
+    clusterByCmoduclass("ヴァーミリアン")
+    clusterByCmoduclass("ヴィクトワールピサ")
+    clusterByCmoduclass("ベーカバド")
+
+  }
+
+
 
 
 //  const [state, setState] = useState({
@@ -113,9 +394,6 @@ const App = () => {
     graph:graphd.graph,
     events: {
       select: ({ nodes, edges,pointer: { canvas } }) => {
-
-        console.log("nodeselect")
-        console.log(nodes)
         
         const node_url = "https://ja.wikipedia.org/wiki/"+nodes
         //const node_url = encodeURI("https://www.jbis.or.jp/horse/result/?keyword="+nodes)
@@ -130,11 +408,7 @@ const App = () => {
         
       },
       doubleClick: ({nodes, pointer: { canvas } }) => {
-        //alert(canvas.x)
-        //createNode(canvas.x, canvas.y);
-        console.log(network)
-        //setNetwork(network)
-        clusterByCmoduclass(nodes[0],canvas.x,canvas.y)
+        clusterByCmoduclass(nodes[0])
       },
       afterDrawing:({})=>{
         //alert("描画しました")
@@ -147,9 +421,10 @@ const App = () => {
   return (
     <>
     <div>
+    <Checkbox checked={physicschecked} onChange={handleChange} />
 <Button
   onClick={() => {
-    clusterall();
+    clustering();
   }}
 >
   クラスタでまとめあげ
@@ -168,6 +443,7 @@ const App = () => {
     
       getNetwork={network => {
         setNetwork(network)
+        
         
       }}
        
