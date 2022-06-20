@@ -8,9 +8,12 @@ const Navbar = () => {
   const handleChange = ((checked)=>{setChecked(checked)})
   
     return (
-      <div>
+      <>
+            <div>
   サイアーライン探し
       </div>
+      </>
+
     )
   }
 export default Navbar

@@ -5,6 +5,10 @@ import React, {useState,useContext,useCallback, useEffect,useRef} from "react";
 import GetRaceHorse from "../components/getRacehorse";
 import { Button,Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 import graphd2 from "../public/sireline.json"
+import Hoge from "./react-modal-hook";
+
+
+export const UserCount = React.createContext(0)
 
 
 // 追加
@@ -14,6 +18,12 @@ const Graph = dynamic(() => import('react-graph-vis'), {
 
 
 const App = () => {
+
+  const [usecount, setuseCount] = useState(100);
+  const value = {
+    usecount,
+    setuseCount,
+  };
 
   const [network,setNetwork] = useState(null)
   const [physicschecked,setphysicschecked] = useState(false)
@@ -78,7 +88,18 @@ const App = () => {
       hierarchical: false,
       improvedLayout:false,
     },
-    physics:{enabled: physicschecked}
+    physics:{
+      enabled: physicschecked,
+      forceAtlas2Based: {
+        theta: 0.5,
+        gravitationalConstant: -50,
+        centralGravity: 0.01,
+        springConstant: 0.08,
+        springLength: 100,
+        damping: 0.4,
+        avoidOverlap: 0
+      },
+    }
   });
 
   
@@ -162,6 +183,9 @@ const App = () => {
   return (
     <>
     <div>
+    <UserCount.Provider value={value}>
+    <Hoge />
+    </UserCount.Provider>
     <FormGroup>
       <FormControlLabel control={<Checkbox checked={physicschecked} onChange={handleChange} size="small"  />} label="動かす" />
     </FormGroup>
