@@ -6,35 +6,36 @@ import GetRaceHorse from "../components/getRacehorse";
 import { Button,Box,TextField,Checkbox,FormGroup,FormControlLabel  } from "@material-ui/core"
 import graphd2 from "../public/sireline.json"
 
+
 // 追加
 const Graph = dynamic(() => import('react-graph-vis'), {
   ssr: false,
-  
 })
 
 
-
-
 const App = () => {
-
-
 
   const [network,setNetwork] = useState(null)
   const [physicschecked,setphysicschecked] = useState(false)
   const [ graphd, setGraphd ] = useState(graphd2[0]);
   
+  
   const handleChange = (event) => { 
     setphysicschecked(event.target.checked)
     options.physics["enabled"] = event.target.checked
+    network.physics["enabled"] = event.target.checked
     
     setOptions(options)
     setNetwork(network)
-    setGraphd(graphd)
+
+    console.log(network)
+    
   }; 
 
-  //useEffect(()=>{
-  //  movetosearchhorse("フジキセキ")
-  //})
+  useEffect(()=>{
+    //movetosearchhorse("サンデーサイレンス")
+
+  },[])
 
   useEffect(()=>{
     try{
@@ -46,8 +47,8 @@ const App = () => {
         }
       });
     }catch{}
-  })
-
+  },)
+  
 
   function movetosearchhorse(search){
     //console.log("moveto")
@@ -69,12 +70,15 @@ const App = () => {
       ,font:{size:5}
       ,group:"Modularity Class"
     },
-      
+    edges: {
+      smooth: {
+        type: "curvedCW"
+      }
+    },      
     layout: {
       hierarchical: false,
       improvedLayout:false,
     },
-    edges: { color: "#000000"},
     physics:{enabled: physicschecked}
   });
 
@@ -386,10 +390,12 @@ const App = () => {
   }
 
 
+  
 
 
 //  const [state, setState] = useState({
   const state={
+    
     graph:graphd.graph,
     events: {
       select: ({ nodes, edges,pointer: { canvas } }) => {
@@ -442,6 +448,7 @@ const App = () => {
     
       getNetwork={network => {
         setNetwork(network)
+        
         
         
       }}
