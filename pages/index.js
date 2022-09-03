@@ -18,7 +18,7 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import graphd2 from "../public/sireline2.json";
-import Hoge from "./react-modal-hook";
+//import Hoge from "./react-modal-hook";
 
 export const UserCount = React.createContext(0);
 
