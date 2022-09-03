@@ -176,9 +176,6 @@ const App = () => {
   return (
     <>
       <div>
-        <UserCount.Provider value={value}>
-          <Hoge />
-        </UserCount.Provider>
         <FormGroup>
           <FormControlLabel
             control={
