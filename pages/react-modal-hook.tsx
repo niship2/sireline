@@ -1,41 +1,37 @@
-import ReactModal from "react-modal"
-import { useState,useContext } from "react"
-import { useModal, ModalProvider } from "react-modal-hook"
-import { UserCount } from './index'
-
-
+import ReactModal from "react-modal";
+import { useState, useContext } from "react";
+import { useModal, ModalProvider } from "react-modal-hook";
+import { UserCount } from "./index";
 
 // アプリのルートを識別するクエリセレクタを指定する。
-ReactModal.setAppElement('#__next')
+ReactModal.setAppElement("#__next");
 
 const App = () => {
+  const { usecount, setuseCount: number } = useContext(UserCount);
 
-  const {usecount, setuseCount} = useContext(UserCount)
-  
-  
+  const [showModal, hideModal] = useModal(
+    () => (
+      <>
+        <ReactModal isOpen>
+          <p>Modal content</p>
+          <button onClick={hideModal}>Hide modal</button>
+          <span>The count is {usecount}</span>
+          <button onClick={() => setuseCount(usecount + 1)}>Increment</button>
+        </ReactModal>
+      </>
+    ),
+    [usecount]
+  );
 
-  const [showModal, hideModal] = useModal(() => (
-    <>
-      <ReactModal isOpen>
-        <p>Modal content</p>
-        <button onClick={hideModal}>Hide modal</button>
-        <span>The count is {usecount}</span>
-        <button onClick={() => setuseCount(usecount + 1)}>Increment</button>
-        
-      </ReactModal>
-      
-    </>
-  ),[usecount])
-
-  return <button onClick={showModal}>Show modal</button>
-}
+  return <button onClick={showModal}>Show modal</button>;
+};
 
 const Hoge = () => {
-  return(
+  return (
     <ModalProvider>
-      <App/>
+      <App />
     </ModalProvider>
-  )
-}
+  );
+};
 
-export default Hoge
+export default Hoge;

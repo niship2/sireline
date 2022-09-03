@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
       <>
             <div>
-  サイアーライン探し
+  意外なつながり探し
       </div>
       </>
 
